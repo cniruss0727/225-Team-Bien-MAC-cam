@@ -1,0 +1,51 @@
+{\rtf1\ansi\ansicpg936\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset134 PingFangSC-Regular;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww15060\viewh11340\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 import controlP5.*;\
+\
+ControlP5 cp5;\
+\
+void setup() \{\
+//set up the window\
+\
+	size(550, 650);\
+	\
+	cam = new Capture(this, 250, 350)\
+	//resize the came and put it at a different spot\
+	image(cam, 50, 50, 250, 350)\
+\
+	cp5 = new Control5(this);\
+\
+	cp5.addButton(\'93Filters\'94)\
+		.setPosition(420, 50)\
+		.setSize(50, 30);\
+	\
+\
+	cp5.addButton(\'93Record\'94)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 		.setPosition(420, 110)\
+		.setSize(50, 30);\
+	\
+	Slider hue = cp5.addSlider
+\f1 (\'a1\'b0Hue\'a1\'b1, 0, 100, 50, 420, 160, 100, 10)\
+	
+\f0 Slider hue = cp5.addSlider
+\f1 (\'a1\'b0Hue\'a1\'b1, 0, 100, 50, 420, 160, 100, 10)\
+
+\f0 	Slider hue = cp5.addSlider
+\f1 (\'a1\'b0Hue\'a1\'b1, 0, 100, 50, 420, 160, 100, 10)
+\f0 \
+		\
+	\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \}\
+\
+void draw() \{\
+	background(235, 180, 255);\
+	fill(0, 255, 0);\
+	text(\'93Webcam Filter\'94, 225, 30);\
+\}}
