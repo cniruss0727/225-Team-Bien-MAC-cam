@@ -21,7 +21,7 @@ void setup(){
       println(cameras[i]);
     }
   } 
-  cam = new Capture(this, cam_width, cam_height);
+  cam = new Capture(this, cam_width, cam_height, cameras[0]);
   cam.start();
   scale(-1, 1);
   currFrame = createImage(cam_width, cam_height, ARGB);
