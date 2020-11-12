@@ -5,11 +5,12 @@ import processing.video.*;
   Slider slider;
   Capture cam;
   Icon macColorFilter;
+  PImage currFrame;
 
   void setup() {
-    size(900, 900);
+    size(960, 900);
     
-    cam = new Capture(this, 900, 600);
+    cam = new Capture(this, 960, 600);
     cam.start();
     
     cp5 = new ControlP5(this);
@@ -22,8 +23,9 @@ import processing.video.*;
     slider.moveTo("Tab 2");
     
     macColorFilter = cp5.addIcon("macFilter", 0).
-        setPosition(500, 500).
-        setSize(100,100);
+        setPosition(500, 600).
+        setSize(100,100).
+        setFill(true);
     macColorFilter.moveTo("Tab 1");
       
 
