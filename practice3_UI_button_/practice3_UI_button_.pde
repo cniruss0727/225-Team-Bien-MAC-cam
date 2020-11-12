@@ -21,9 +21,10 @@ import processing.video.*;
     button.moveTo("Tab 1");
     slider.moveTo("Tab 2");
     
-    macColorFilter = cp5.addIcon("macFilter").
-        setValue(0).
-        setPosition(
+    macColorFilter = cp5.addIcon("macFilter", 0).
+        setPosition(500, 500).
+        setSize(100,100);
+    macColorFilter.moveTo("Tab 1");
       
 
   }
