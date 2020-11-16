@@ -27,7 +27,7 @@ Customized filters & Changing background
 Phase 6: Sharing on social media, have a “MAC filter” community account
 
 
-11.12
+-11.12
 Created prototype(buttons, default live cam, 1 filter)
 
 
