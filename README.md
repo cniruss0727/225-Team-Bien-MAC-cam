@@ -7,7 +7,7 @@ A live cam software  for Macalester that runs on computers, which integrates all
 -## Audience for launch: Macalester Community. We will design some macalester-related filters which suit our community. 
 
 ## Risks: 
-##a.For more complex filters, we may struggle with processing the video fast enough to have a smooth user experience
+#a.For more complex filters, we may struggle with processing the video fast enough to have a smooth user experience
 ##b.Some of the more complex filters might require better GPU to run smoothly
 ##c.The development of the painting function might be really time consuming. 
 d.None of us are on campus so we might need extra help to get the background pictures for Macalester.
