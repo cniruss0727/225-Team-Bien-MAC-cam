@@ -1,11 +1,12 @@
 # 225-Team-Bien-MAC-cam
 
 
--**Ultimate goals**:  A live cam software  for Macalester that runs on computers, which integrates all kinds of filters, especially macalester-themed filters, and you can take pictures/record videos.
+## Ultimate goals:  
+A live cam software  for Macalester that runs on computers, which integrates all kinds of filters, especially macalester-themed filters, and you can take pictures/record videos.
 
--**Audience** for launch: Macalester Community. We will design some macalester-related filters which suit our community. 
+-## Audience for launch: Macalester Community. We will design some macalester-related filters which suit our community. 
 
--**Risks**: 
+## Risks: 
 ##a.For more complex filters, we may struggle with processing the video fast enough to have a smooth user experience
 ##b.Some of the more complex filters might require better GPU to run smoothly
 ##c.The development of the painting function might be really time consuming. 
