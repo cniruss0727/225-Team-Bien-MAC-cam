@@ -17,7 +17,7 @@ import java.awt.Rectangle;
   OpenCV opencv;
 
   void setup() {
-    size(960, 900);
+    size(960, 900, P2D);
     String[] cameras = Capture.list();
     while(cameras.length == 0){
         println("There are no cameras available for capture.");
@@ -56,41 +56,40 @@ import java.awt.Rectangle;
    currFrame = createImage(960, 600, ARGB);
 
   }
-
+  
+  
   void draw() {
-     background(0);
-     
+    background(0);
     if (cam.available()){
+    cam.read();
     
     opencv.loadImage(cam);
+    
+    faces = opencv.detect();
+    
     image(cam, 0, 0);
     
-    noFill();
     
-    stroke(0, 255, 0);
-    strokeWeight(3);
-    Rectangle[] faces = opencv.detect();
-    println(faces.length);
-    
-    for (int i = 0; i < faces.length; i++) {
-      println(faces[i].x + "," + faces[i].y);
-      rect(faces[i].x, faces[i].y, faces[i].width, faces[i].height);
-  }
+    if (faces != null) {
+      for (int i = 0; i < faces.length; i++) {
+        stroke(255,0,0);
+        strokeWeight(3);
+        noFill();
+        println(faces[i].x + "," + faces[i].y);
+        rect(faces[i].x, faces[i].y, faces[i].width, faces[i].height);
+      }
+    }
+  
+  
+    if(macColorFilterButton.isOn()){
+      currFrame.copy(cam, 0, 0, cam.width, cam.height, 0, 0, currFrame.width, currFrame.height);
+      PImage processedImage = macColorFilter.transform(currFrame);
+      image(processedImage, 0, 0);
+      }
+    }
   }
   
-  if(macColorFilterButton.isOn()){
-    currFrame.copy(cam, 0, 0, cam.width, cam.height, 0, 0, currFrame.width, currFrame.height);
-    PImage processedImage = macColorFilter.transform(currFrame);
-    image(processedImage, 0, 0);
-  }
-  else {
-    image(cam,0,0);
-  }
-  }
   
-  void captureEvent(Capture c) {
-  c.read();
-}
   
   public void boo(){
     println("boo");//funcitons triggered by button
