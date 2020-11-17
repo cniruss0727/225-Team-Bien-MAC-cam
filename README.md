@@ -41,6 +41,12 @@ Customized filters & Changing background
 ## 11.12
 Created prototype(buttons, default live cam, 1 filter)
 
+## 11.17
+* Fixed tab
+* Fixed Face Tracker
+* Find materials for mac themed filters
+
+
 
 
 
