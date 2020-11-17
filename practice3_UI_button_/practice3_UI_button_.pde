@@ -13,8 +13,19 @@ import milchreis.imageprocessing.utils.*;
 
   void setup() {
     size(960, 900);
+    String[] cameras = Capture.list();
+    while(cameras.length == 0){
+        println("There are no cameras available for capture.");
+        cameras = Capture.list();
+    }
     
-    cam = new Capture(this, 960, 600);
+    for (int i = 0; i < cameras.length; i++) {
+      println("Available cameras:");
+      println(cameras[i]);
+    }
+      
+    
+    cam = new Capture(this, 960, 600, cameras[0]);
     cam.start();
     
     macColorFilter = new MacColorFilter();
