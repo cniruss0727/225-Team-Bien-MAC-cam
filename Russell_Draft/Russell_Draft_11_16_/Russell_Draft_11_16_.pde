@@ -14,11 +14,7 @@ import milchreis.imageprocessing.utils.*;
   void setup() {
     size(960, 900);
     
-    cam = new Capture(this, 960, 600);
-    cam.start();
-    
-    macColorFilter = new MacColorFilter();
-    
+
     cp5 = new ControlP5(this);
     slider = cp5.addSlider("mySlider").setPosition(1000,600).setSize(200,20);
     button = cp5.addButton("boo").
@@ -41,19 +37,7 @@ import milchreis.imageprocessing.utils.*;
 
   void draw() {
      background(0);
-     
-    if (cam.available()){
-    cam.read();
-  }
-  
-  if(macColorFilterButton.isOn()){
-    currFrame.copy(cam, 0, 0, cam.width, cam.height, 0, 0, currFrame.width, currFrame.height);
-    PImage processedImage = macColorFilter.transform(currFrame);
-    image(processedImage, 0, 0);
-  }
-  else {
-    image(cam,0,0);
-  }
+
   }
   
   public void boo(){
