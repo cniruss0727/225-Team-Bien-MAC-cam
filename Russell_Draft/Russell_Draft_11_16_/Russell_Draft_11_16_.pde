@@ -2,6 +2,7 @@ import controlP5.*;
 import processing.video.*;
 import milchreis.imageprocessing.*;
 import milchreis.imageprocessing.utils.*;
+import java.util.*;
 
   ControlP5 cp5;
   
@@ -19,13 +20,17 @@ import milchreis.imageprocessing.utils.*;
    
     
  
-//Tabs
-    
-     cp5.getTab("default")
-     .setLabel("filters picker")
+//Tabs   
+    cp5.getTab("default")
+    .setColorBackground(color(121, 172, 247))
+     .setColorLabel(color(255))
+     .setColorActive(color(255,128,0))
+      .setAlwaysActive(true);
+      
+     cp5.addTab("filters picker")
      .setColorBackground(color(121, 172, 247))
      .setColorLabel(color(255))
-     .setColorActive(color(255,128,0));
+     .setColorActive(color(255,128,0))
      ;
     
     cp5.addTab("color adjustment")
@@ -81,33 +86,44 @@ import milchreis.imageprocessing.utils.*;
      ;
     
     
-    macColorFilterButton = cp5.addButton("macFilter").
-        setValue(0).
-        setPosition(500, 700).
-        setSize(100,40).
-        setColorBackground(color(250, 250, 0));
-    macColorFilterButton.moveTo("default");
     
     recorder= cp5.addBang("bang")
      .setPosition(60, 500)
      .setSize(50, 50)
      .setTriggerEvent(Bang.RELEASE)
      .setLabel("record")
-     .setImage(img);
+     .setImage(img)
+     .moveTo("default")
      ;
       
-  
+ 
+     
+ //filter selection bar
+  ButtonBar b = cp5.addButtonBar("filter bar")
+     .setPosition(300, 800)
+     .setSize(400, 30)
+     .addItems(split("a b c d e"," "))
+     .moveTo("filters picker");
+     ;
+     
+  b.changeItem("a","text","basic");
+  b.changeItem("b","text","MAC");
+  b.changeItem("c","text","stickers");
 
   }
 
   void draw() {
      background(50, 84, 168);
-     rect(0,0,width,height-300);
-     recorder.bringToFront();
-      
-    
+     rect(0,0,width,height-300);   
      
   }
+  
   void bang(){
     println("whatsup");
+  }
+  
+  
+  public void stickers() {
+    recorder.moveTo("stickers");
+     println("whatsup");        
   }
