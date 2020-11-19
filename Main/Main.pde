@@ -8,11 +8,23 @@ import gab.opencv.*;
   Capture cam;
   Button macColorFilterButton;
   Filter macColorFilter;
+  Button recorder;
   PImage currFrame;
+  PImage recordImage;
+  PImage filterImage;
+  PImage colorImage;
+  PImage stickerImage;
+
 
   void setup() {
     size(960, 900);
+    frameRate(10);
     cp5 = new ControlP5(this);
+    macColorFilter = new MacColorFilter(this);
+    recordImage = loadImage("macButton.png");
+    filterImage = loadImage("filterButton.png");
+    colorImage = loadImage("colorButton.png");
+    stickerImage = loadImage("stickerButton.png");
     //Tabs   
     cp5.getTab("default")
     .setColorBackground(color(121, 172, 247))
@@ -76,6 +88,39 @@ import gab.opencv.*;
      .setHeight(30)
      .moveTo("color adjustment")
      ;
+     
+  //buttons    
+    
+    recorder= cp5.addButton("record")
+     .setPosition(60, 500)
+     .setImage(recordImage)
+     .moveTo("default")
+     .updateSize()
+     ;
+     
+     recorder= cp5.addButton("filter")
+     .setPosition(650,510)
+     .setImage(filterImage)
+     .moveTo("default")
+     .updateSize()
+     ;
+     recorder= cp5.addButton("colour")
+     .setPosition(760, 505)
+     .setImage(colorImage)
+     .moveTo("default")
+     .updateSize()
+     ;
+     
+     recorder= cp5.addButton("sticker")
+     .setPosition(880, 475)
+     .setImage(stickerImage)
+     .moveTo("default")
+     .updateSize()
+     ;
+     
+     cp5.addButton("macColorFilterButton")
+     .setPosition(400, 700)
+     .moveTo("filters picker");
     
   //filter selection bar
     ButtonBar b = cp5.addButtonBar("filter bar")
@@ -116,14 +161,27 @@ import gab.opencv.*;
     cam.read();
   }
   
-  //if(macColorFilterButton.isOn()){
-  //  currFrame.copy(cam, 0, 0, cam.width, cam.height, 0, 0, currFrame.width, currFrame.height);
-  //  PImage processedImage = macColorFilter.transform(currFrame);
-  //  image(processedImage, 0, 0);
-  //}
-  //else {
-    image(cam,10, 10);
-  //}
+  if(((Button)(cp5.getController("macColorFilterButton"))).isOn()){
+    PImage processedImage = macColorFilter.transform(cam);
+    image(processedImage, 10, 10);
   }
- 
+  else {
+    image(cam,10, 10);
+  }
+  }
+  
+   public void record(){
+    println("Yo im recording!");
+  }
+  
+  public void filter(){
+    cp5.getTab("filters picker").bringToFront();
+  }
+  
+ public void colour(){
+   cp5.getTab("color adjustment").bringToFront();
+ }
+ public void sticker(){
+   cp5.getTab("stickers").bringToFront();
+ }
      
