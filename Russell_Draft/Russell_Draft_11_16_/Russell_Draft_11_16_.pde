@@ -6,17 +6,24 @@ import java.util.*;
 
   ControlP5 cp5;
   
-  Button macColorFilterButton;
-  Filter macColorFilter;
-  Bang recorder;
+
+  Button recorder;
   
-  PImage img;
+  PImage recordImage;
+  PImage filterImage;
+  PImage colorImage;
+  PImage stickerImage;
+
 
 
   void setup() {
     size(960, 900);
     cp5 = new ControlP5(this);
-    img = loadImage("button.png");
+    recordImage = loadImage("macButton.png");
+    filterImage = loadImage("filterButton.png");
+    colorImage = loadImage("colorButton.png");
+    stickerImage = loadImage("stickerButton.png");
+    
    
     
  
@@ -25,12 +32,15 @@ import java.util.*;
     .setColorBackground(color(121, 172, 247))
      .setColorLabel(color(255))
      .setColorActive(color(255,128,0))
-      .setAlwaysActive(true);
+      .setAlwaysActive(true)
+      ;
       
      cp5.addTab("filters picker")
      .setColorBackground(color(121, 172, 247))
      .setColorLabel(color(255))
      .setColorActive(color(255,128,0))
+     //.setPosition(0,700)
+     //.setAbsolutePosition(array)
      ;
     
     cp5.addTab("color adjustment")
@@ -85,15 +95,33 @@ import java.util.*;
      .moveTo("color adjustment")
      ;
     
+//buttons    
     
-    
-    recorder= cp5.addBang("bang")
+    recorder= cp5.addButton("record")
      .setPosition(60, 500)
-     .setSize(50, 50)
-     .setTriggerEvent(Bang.RELEASE)
-     .setLabel("record")
-     .setImage(img)
+     .setImage(recordImage)
      .moveTo("default")
+     .updateSize()
+     ;
+     
+     recorder= cp5.addButton("filter")
+     .setPosition(650,510)
+     .setImage(filterImage)
+     .moveTo("default")
+     .updateSize()
+     ;
+     recorder= cp5.addButton("colour")
+     .setPosition(760, 505)
+     .setImage(colorImage)
+     .moveTo("default")
+     .updateSize()
+     ;
+     
+     recorder= cp5.addButton("sticker")
+     .setPosition(880, 475)
+     .setImage(stickerImage)
+     .moveTo("default")
+     .updateSize()
      ;
       
  
@@ -118,12 +146,18 @@ import java.util.*;
      
   }
   
-  void bang(){
-    println("whatsup");
+  public void record(){
+    println("Yo im recording!");
   }
   
-  
-  public void stickers() {
-    recorder.moveTo("stickers");
-     println("whatsup");        
+  public void filter(){
+    cp5.getTab("filters picker").bringToFront();
   }
+  
+ public void colour(){
+   cp5.getTab("color adjustment").bringToFront();
+ }
+ public void sticker(){
+   cp5.getTab("stickers").bringToFront();
+ }
+ 
