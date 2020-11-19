@@ -39,12 +39,19 @@ Customized filters & Changing background
 
 
 ## 11.12
-Created prototype(buttons, default live cam, 1 filter)
+* Created prototype(buttons, default live cam, 1 filter)
 
 ## 11.17
 * Fixed tab
 * Fixed Face Tracker
 * Find materials for mac themed filters
+
+## 11.19
+* All the buttons are ready(need better materials)
+* The face recognition filter is working
+* The sticker function has some bugs
+* MAC Color Scheme filter is working
+* Need to solve RAM issue
 
 
 
