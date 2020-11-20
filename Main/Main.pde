@@ -6,15 +6,11 @@ import gab.opencv.*;
 
   ControlP5 cp5;
   Capture cam;
-  Button macColorFilterButton;
   Filter macColorFilter;
   ContrastFilter contrastFilter;
   Button recorder;
   PImage currFrame;
   PImage recordImage;
-  PImage filterImage;
-  PImage colorImage;
-  PImage stickerImage;
   PImage processedImage;
 
 
@@ -25,9 +21,6 @@ import gab.opencv.*;
     macColorFilter = new MacColorFilter(this);
     contrastFilter = new ContrastFilter(this);
     recordImage = loadImage("macButton.png");
-    filterImage = loadImage("filterButton.png");
-    colorImage = loadImage("colorButton.png");
-    stickerImage = loadImage("stickerButton.png");
     //Tabs   
     cp5.getTab("default")
     .setColorBackground(color(121, 172, 247))
@@ -98,7 +91,7 @@ import gab.opencv.*;
      .moveTo("color adjustment")
      ;
      
-  //buttons    
+//buttons    
     
     recorder= cp5.addButton("record")
      .setPosition(60, 500)
@@ -107,29 +100,36 @@ import gab.opencv.*;
      .updateSize()
      ;
      
+   PImage[] filterButtons = {loadImage("filterButton.png"),loadImage("filterButton2.png"),loadImage("filterButton.png")};
      recorder= cp5.addButton("filter")
-     .setPosition(650,510)
-     .setImage(filterImage)
+     .setPosition(753, 614)
+     .setImages(filterButtons)
      .moveTo("default")
      .updateSize()
      ;
+     
+      PImage[] colorButtons = {loadImage("colorButton.png"),loadImage("colorButton2.png"),loadImage("colorButton.png")};
      recorder= cp5.addButton("colour")
-     .setPosition(760, 505)
-     .setImage(colorImage)
+     .setPosition(826, 620)
+     .setImages(colorButtons)
      .moveTo("default")
      .updateSize()
      ;
      
+     PImage[] stickerButtons = {loadImage("stickerButton.png"),loadImage("stickerButton2.png"),loadImage("stickerButton.png")};
      recorder= cp5.addButton("sticker")
-     .setPosition(880, 475)
-     .setImage(stickerImage)
+     .setPosition(892, 607)
+     .setImages(stickerButtons)
      .moveTo("default")
      .updateSize()
      ;
      
-     cp5.addButton("macColorFilterButton")
-     .setPosition(400, 700)
-     .moveTo("filters picker");
+    recorder= cp5.addButton("macColorFilterButton")
+     .setPosition(300, 700)
+     .setSize(100, 30)
+     .moveTo("filters picker")
+     .updateSize()
+     ;
     
   //filter selection bar
     ButtonBar b = cp5.addButtonBar("filter bar")
@@ -170,7 +170,7 @@ import gab.opencv.*;
     cam.read();
   }
   
-  if(((Button)(cp5.getController("macColorFilterButton"))).isOn()){
+  if(((Button)(cp5.getController("colour"))).isOn()){
     processedImage = macColorFilter.transform(cam);
   }
   else {
