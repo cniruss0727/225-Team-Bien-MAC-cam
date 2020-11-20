@@ -10,9 +10,6 @@ import java.util.*;
   Button recorder;
   
   PImage recordImage;
-  PImage filterImage;
-  PImage colorImage;
-  PImage stickerImage;
 
 
 
@@ -20,9 +17,7 @@ import java.util.*;
     size(960, 900);
     cp5 = new ControlP5(this);
     recordImage = loadImage("macButton.png");
-    filterImage = loadImage("filterButton.png");
-    colorImage = loadImage("colorButton.png");
-    stickerImage = loadImage("stickerButton.png");
+  
     
    
     
@@ -104,22 +99,26 @@ import java.util.*;
      .updateSize()
      ;
      
+   PImage[] filterButtons = {loadImage("filterButton.png"),loadImage("filterButton2.png"),loadImage("filterButton.png")};
      recorder= cp5.addButton("filter")
-     .setPosition(650,510)
-     .setImage(filterImage)
-     .moveTo("default")
-     .updateSize()
-     ;
-     recorder= cp5.addButton("colour")
-     .setPosition(760, 505)
-     .setImage(colorImage)
+     .setPosition(753, 614)
+     .setImages(filterButtons)
      .moveTo("default")
      .updateSize()
      ;
      
+      PImage[] colorButtons = {loadImage("colorButton.png"),loadImage("colorButton2.png"),loadImage("colorButton.png")};
+     recorder= cp5.addButton("colour")
+     .setPosition(826, 620)
+     .setImages(colorButtons)
+     .moveTo("default")
+     .updateSize()
+     ;
+     
+     PImage[] stickerButtons = {loadImage("stickerButton.png"),loadImage("stickerButton2.png"),loadImage("stickerButton.png")};
      recorder= cp5.addButton("sticker")
-     .setPosition(880, 475)
-     .setImage(stickerImage)
+     .setPosition(892, 607)
+     .setImages(stickerButtons)
      .moveTo("default")
      .updateSize()
      ;
