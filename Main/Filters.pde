@@ -32,4 +32,11 @@ class ContrastFilter extends Filter {
     cv.contrast(1.5);
     return cv.getOutput();
   }
+  
+  PImage transform(PImage image, int brightness, float contrast, float saturation, int hue){
+  OpenCV cv = new OpenCV(applet, image, true);
+  cv.brightness(brightness);
+  cv.contrast(contrast);
+  return Saturation.apply(cv.getOutput(), saturation);
+  }
 }

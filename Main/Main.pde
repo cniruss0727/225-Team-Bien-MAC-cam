@@ -8,19 +8,22 @@ import gab.opencv.*;
   Capture cam;
   Button macColorFilterButton;
   Filter macColorFilter;
+  ContrastFilter contrastFilter;
   Button recorder;
   PImage currFrame;
   PImage recordImage;
   PImage filterImage;
   PImage colorImage;
   PImage stickerImage;
+  PImage processedImage;
 
 
   void setup() {
     size(960, 900);
-    frameRate(10);
+    frameRate(5);
     cp5 = new ControlP5(this);
     macColorFilter = new MacColorFilter(this);
+    contrastFilter = new ContrastFilter(this);
     recordImage = loadImage("macButton.png");
     filterImage = loadImage("filterButton.png");
     colorImage = loadImage("colorButton.png");
@@ -56,6 +59,8 @@ import gab.opencv.*;
      .setColorForeground(color(247, 171, 7))
      .setWidth(300)
      .setHeight(30)
+     .setRange(0, 2)
+     .setValue(1)
      .moveTo("color adjustment")
      ;
      
@@ -66,6 +71,8 @@ import gab.opencv.*;
      .setColorForeground(color(242, 165, 0))
      .setWidth(300)
      .setHeight(30)
+     .setRange(-100, 100)
+     .setValue(0)
      .moveTo("color adjustment")
      ;
      
@@ -76,6 +83,8 @@ import gab.opencv.*;
      .setColorForeground(color(214, 147, 2))
      .setWidth(300)
      .setHeight(30)
+     .setRange(0, 2)
+     .setValue(1)
      .moveTo("color adjustment")
      ;
      
@@ -162,12 +171,19 @@ import gab.opencv.*;
   }
   
   if(((Button)(cp5.getController("macColorFilterButton"))).isOn()){
-    PImage processedImage = macColorFilter.transform(cam);
-    image(processedImage, 10, 10);
+    processedImage = macColorFilter.transform(cam);
   }
   else {
-    image(cam,10, 10);
+    processedImage = cam;
   }
+  
+  processedImage = contrastFilter.transform(processedImage,
+      Math.round(cp5.get("Brightness").getValue()),
+      cp5.get("Contrast").getValue(),
+      cp5.get("Saturation").getValue(),
+      1);
+      image(processedImage, 10, 10);
+  
   }
   
    public void record(){
