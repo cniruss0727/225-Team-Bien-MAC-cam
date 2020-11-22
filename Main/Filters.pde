@@ -21,20 +21,20 @@ class MacColorFilter extends Filter {
 }
 
 class ContrastFilter extends Filter {
+  OpenCV cv;
   ContrastFilter(PApplet applet){
     this.name = "ContrastFilter";
     this.applet = applet;
+    this.cv = new OpenCV(applet, 940, 580);
+    cv.useColor();
   }
   
   PImage transform(PImage image){
-    OpenCV cv = new OpenCV(applet, image, true);
-    cv.brightness(-50);
-    cv.contrast(1.5);
-    return cv.getOutput();
+    return image;
   }
   
-  PImage transform(PImage image, int brightness, float contrast, float saturation, int hue){
-  OpenCV cv = new OpenCV(applet, image, true);
+  PImage transform(PImage image, int brightness, float contrast, float saturation){
+  cv.loadImage(image);
   cv.brightness(brightness);
   cv.contrast(contrast);
   return Saturation.apply(cv.getOutput(), saturation);

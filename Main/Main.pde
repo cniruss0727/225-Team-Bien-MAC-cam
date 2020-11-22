@@ -82,7 +82,7 @@ import java.awt.Rectangle;
      .moveTo("color adjustment")
      ;
      
-      cp5.addSlider("Contrast")
+    cp5.addSlider("Contrast")
      .setPosition(80,760)
      .setSize(200,20)
      .setColorActive(color(214, 147, 2))
@@ -94,15 +94,17 @@ import java.awt.Rectangle;
      .moveTo("color adjustment")
      ;
      
-       cp5.addSlider("Hue")
-     .setPosition(80,800)
-     .setSize(200,20)
-     .setColorActive(color( 191, 135, 13))
-     .setColorForeground(color( 191, 135, 13))
-     .setWidth(300)
-     .setHeight(30)
-     .moveTo("color adjustment")
-     ;
+    cp5.addColorWheel("Hue")
+     .setPosition(500, 650)
+     .setSize(200, 200)
+     .moveTo("color adjustment");
+     
+    cp5.addBang("resetSliders")
+      .setPosition(100, 800)
+      .setLabel("Reset")
+      .setSize(100, 60)
+      .moveTo("color adjustment")
+      .setTriggerEvent(Bang.RELEASE);
      
 //buttons    
     
@@ -184,9 +186,6 @@ import java.awt.Rectangle;
     opencv = new OpenCV(this, 940, 580);
     opencv.loadCascade(OpenCV.CASCADE_FRONTALFACE);
     cam.start();
-    
-   currFrame = createImage(940, 580, ARGB);
-
   }
 
   void draw() {
@@ -201,7 +200,7 @@ import java.awt.Rectangle;
     
   }
   
-  if(((Button)(cp5.getController("colour"))).isOn()){
+  if(((Button)(cp5.getController("macColorFilterButton"))).isOn()){
     processedImage = macColorFilter.transform(cam);
   }
   else {
@@ -213,9 +212,10 @@ import java.awt.Rectangle;
   processedImage = contrastFilter.transform(processedImage,
       Math.round(cp5.get("Brightness").getValue()),
       cp5.get("Contrast").getValue(),
-      cp5.get("Saturation").getValue(),
-      1);
+      cp5.get("Saturation").getValue());
+      tint(((ColorWheel)(cp5.get("Hue"))).getRGB());
       image(processedImage, 10, 10);
+      tint(255, 255);
       
    if(((Button)(cp5.getController("scotSticker"))).isOn()){
    state = true;
@@ -226,9 +226,9 @@ import java.awt.Rectangle;
   }
   
   
-  opencv.loadImage(cam);   
-  faces = opencv.detect();
   if(((Button)(cp5.getController("scotFace"))).isOn()){
+      opencv.loadImage(cam);   
+      faces = opencv.detect();
       if (faces != null) {
       for (int i = 0; i < faces.length; i++) {
         image(loadImage("macalester logo.png"), faces[i].x, faces[i].y, faces[i].width, faces[i].height);
@@ -253,6 +253,7 @@ import java.awt.Rectangle;
  public void sticker(){
    cp5.getTab("stickers").bringToFront();
  }
+ 
  public void mouseClicked() {
     //Check to see if the boolean "state" is true so that we could pass in coordinates
     if (state == true) {
@@ -260,7 +261,15 @@ import java.awt.Rectangle;
     y = mouseY;
     xposition.append(x);
     yposition.append(y);
-    }
-      
+    }    
+  }
+
+public void resetSliders(){
+    cp5.get("Saturation").setValue(1);
+    cp5.get("Brightness").setValue(0);
+    cp5.get("Contrast").setValue(1);
+    ((ColorWheel)cp5.get("Hue"))
+      .setRGB(color(255, 255, 255))
+      .setSaturation(1);
   }
  
