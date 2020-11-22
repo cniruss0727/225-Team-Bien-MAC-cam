@@ -3,12 +3,20 @@ import processing.video.*;
 import milchreis.imageprocessing.*;
 import milchreis.imageprocessing.utils.*;
 import gab.opencv.*;
+import java.awt.Rectangle;
 
   ControlP5 cp5;
   Capture cam;
   Filter macColorFilter;
   ContrastFilter contrastFilter;
   Button recorder;
+  Rectangle[] faces;
+  OpenCV opencv;
+  boolean state;
+  float x;
+  float y;
+  FloatList xposition = new FloatList();
+  FloatList yposition = new FloatList();
   PImage currFrame;
   PImage recordImage;
   PImage processedImage;
@@ -18,9 +26,14 @@ import gab.opencv.*;
     size(960, 900);
     frameRate(5);
     cp5 = new ControlP5(this);
+    
+    
+    
+    
     macColorFilter = new MacColorFilter(this);
     contrastFilter = new ContrastFilter(this);
     recordImage = loadImage("macButton.png");
+    
     //Tabs   
     cp5.getTab("default")
     .setColorBackground(color(121, 172, 247))
@@ -99,7 +112,18 @@ import gab.opencv.*;
      .moveTo("default")
      .updateSize()
      ;
-     
+    
+    cp5.addButton("scotSticker")
+     .setPosition(300, 600)
+     .moveTo("stickers")
+     .updateSize()
+     ;
+    
+    cp5.addButton("scotFace")
+      .setPosition(100,600)
+      .moveTo("stickers")
+      .updateSize()
+     ;
    PImage[] filterButtons = {loadImage("filterButton.png"),loadImage("filterButton2.png"),loadImage("filterButton.png")};
      recorder= cp5.addButton("filter")
      .setPosition(753, 614)
@@ -156,18 +180,25 @@ import gab.opencv.*;
       
     
     cam = new Capture(this, 940, 580, cameras[0]);
+    
+    opencv = new OpenCV(this, 940, 580);
+    opencv.loadCascade(OpenCV.CASCADE_FRONTALFACE);
     cam.start();
-
+    
    currFrame = createImage(940, 580, ARGB);
 
   }
 
   void draw() {
      background(50, 84, 168);
+    
      rect(0,0,width,height-300);   
      
     if (cam.available()){
     cam.read();
+    
+    
+    
   }
   
   if(((Button)(cp5.getController("colour"))).isOn()){
@@ -177,12 +208,34 @@ import gab.opencv.*;
     processedImage = cam;
   }
   
+  
+  
   processedImage = contrastFilter.transform(processedImage,
       Math.round(cp5.get("Brightness").getValue()),
       cp5.get("Contrast").getValue(),
       cp5.get("Saturation").getValue(),
       1);
       image(processedImage, 10, 10);
+      
+   if(((Button)(cp5.getController("scotSticker"))).isOn()){
+   state = true;
+      //access the two position lists and create stickers on the frame
+      for(int i = 0; i < xposition.size(); i++) {
+        image(loadImage("stickerButton.png"), xposition.get(i), yposition.get(i));
+        }
+  }
+  
+  
+  opencv.loadImage(cam);   
+  faces = opencv.detect();
+  if(((Button)(cp5.getController("scotFace"))).isOn()){
+      if (faces != null) {
+      for (int i = 0; i < faces.length; i++) {
+        image(loadImage("macalester logo.png"), faces[i].x, faces[i].y, faces[i].width, faces[i].height);
+        }
+      } 
+  }
+  
   
   }
   
@@ -200,4 +253,14 @@ import gab.opencv.*;
  public void sticker(){
    cp5.getTab("stickers").bringToFront();
  }
-     
+ public void mouseClicked() {
+    //Check to see if the boolean "state" is true so that we could pass in coordinates
+    if (state == true) {
+    x = mouseX;
+    y = mouseY;
+    xposition.append(x);
+    yposition.append(y);
+    }
+      
+  }
+ 
