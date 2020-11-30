@@ -1,3 +1,4 @@
+import g4p_controls.*;
 import controlP5.*;
 import processing.video.*;
 import milchreis.imageprocessing.*;
@@ -6,11 +7,13 @@ import gab.opencv.*;
 import java.awt.Rectangle;
 
   ControlP5 cp5;
+  ControlP5 savePictureCp5;
   Capture cam;
   Filter macColorFilter;
   ContrastFilter contrastFilter;
   Button recorder;
   Rectangle[] faces;
+  GWindow savePictureWindow;
   OpenCV opencv;
   boolean state;
   float x;
@@ -24,9 +27,10 @@ import java.awt.Rectangle;
 
   void setup() {
     size(960, 900);
-    frameRate(5);
+    frameRate(30);
     cp5 = new ControlP5(this);
     
+    createSavePictureWindow();
     
     
     
@@ -157,6 +161,13 @@ import java.awt.Rectangle;
      .updateSize()
      ;
     
+    cp5.addButton("takePhoto")
+      .setPosition(800,750)
+      .setSize(100,50)
+      .moveTo("default")
+      .updateSize()
+      ;
+    
   //filter selection bar
     ButtonBar b = cp5.addButtonBar("filter bar")
        .setPosition(300, 800)
@@ -216,6 +227,7 @@ import java.awt.Rectangle;
       tint(((ColorWheel)(cp5.get("Hue"))).getRGB());
       image(processedImage, 10, 10);
       tint(255, 255);
+      g.removeCache(processedImage);
       
    if(((Button)(cp5.getController("scotSticker"))).isOn()){
    state = true;
@@ -272,4 +284,17 @@ public void resetSliders(){
       .setRGB(color(255, 255, 255))
       .setSaturation(1);
   }
+  
+public void takePhoto(){
+    PImage camWindowCopy = get(20, 20, 940, 580);
+    ((Textfield)savePictureCp5.get("savePictureTextField")).setText("");
+    savePictureWindow.setVisible(true);
+    while(savePictureWindow.isVisible()){
+      delay(1000);
+    }
+    if(pictureSaved == true){
+      String fileName = ((Textfield)savePictureCp5.get("savePictureTextField")).getText();
+      camWindowCopy.save("Photos//" + fileName + ".png");
+    }
+}
  
