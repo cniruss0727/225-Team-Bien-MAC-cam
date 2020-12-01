@@ -91,17 +91,17 @@ import java.util.*;
      ;
     
 //buttons    
-    
+      PImage[] recordButtons = {loadImage("recordButton1.png"),loadImage("recordButton2.png"),loadImage("recordButton3.png")};
     recorder= cp5.addButton("record")
-     .setPosition(60, 500)
-     .setImage(recordImage)
+     .setPosition(18, 615)
+     .setImages(recordButtons)
      .moveTo("default")
      .updateSize()
      ;
      
    PImage[] filterButtons = {loadImage("filterButton4.png"),loadImage("filterButton3.png"),loadImage("filterButton4.png")};
      recorder= cp5.addButton("filter")
-     .setPosition(754, 618)
+     .setPosition(752, 616)
      .setImages(filterButtons)
      .moveTo("default")
      .updateSize()
@@ -117,25 +117,58 @@ import java.util.*;
      
      PImage[] stickerButtons = {loadImage("stickerButton.png"),loadImage("stickerButton2.png"),loadImage("stickerButton.png")};
      recorder= cp5.addButton("sticker")
-     .setPosition(892, 607)
+     .setPosition(891, 617)
      .setImages(stickerButtons)
      .moveTo("default")
      .updateSize()
      ;
+     
+     
+
+//filters buttons
+PImage[] preview1 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage("preview.jpg")};
+     recorder= cp5.addButton("P1")
+     .setPosition(120, 650)
+     .setImages(preview1)
+     .moveTo("filters picker")
+     .updateSize()
+     ;
+PImage[] preview2 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage("preview.jpg")};
+     recorder= cp5.addButton("P2")
+     .setPosition(290, 650)
+     .setImages(preview2)
+     .moveTo("filters picker")
+     .updateSize()
+      ;
+PImage[] preview3 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage("preview.jpg")};
+     recorder= cp5.addButton("P3")
+     .setPosition(460, 650)
+     .setImages(preview3)
+     .moveTo("filters picker")
+     .updateSize()
+     ;
+PImage[] preview4 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage("preview.jpg")};
+     recorder= cp5.addButton("P4")
+     .setPosition(630, 650)
+     .setImages(preview4)
+     .moveTo("filters picker")
+     .updateSize()
+     ;
+      
       
  
      
  //filter selection bar
-  ButtonBar b = cp5.addButtonBar("filter bar")
-     .setPosition(300, 800)
-     .setSize(400, 30)
-     .addItems(split("a b c d e"," "))
-     .moveTo("filters picker");
-     ;
+  //ButtonBar b = cp5.addButtonBar("filter bar")
+     //.setPosition(300, 800)
+    //.setSize(400, 30)
+     //.addItems(split("a b c d e"," "))
+     //.moveTo("filters picker");
+     //;
      
-  b.changeItem("a","text","basic");
-  b.changeItem("b","text","MAC");
-  b.changeItem("c","text","stickers");
+  //b.changeItem("a","text","basic");
+  //b.changeItem("b","text","MAC");
+ //b.changeItem("c","text","stickers");
 
   }
 
