@@ -130,7 +130,7 @@ import java.awt.Rectangle;
       .moveTo("stickers")
       .updateSize()
      ;
-   PImage[] filterButtons = {loadImage("filterButton.png"),loadImage("filterButton2.png"),loadImage("filterButton.png")};
+   PImage[] filterButtons = {loadImage("filterButton4.png"),loadImage("filterButton3.png"),loadImage("filterButton4.png")};
      recorder= cp5.addButton("filter")
      .setPosition(753, 614)
      .setImages(filterButtons)
@@ -138,7 +138,7 @@ import java.awt.Rectangle;
      .updateSize()
      ;
      
-      PImage[] colorButtons = {loadImage("colorButton.png"),loadImage("colorButton2.png"),loadImage("colorButton.png")};
+      PImage[] colorButtons = {loadImage("colorButton3.png"),loadImage("colorButton4.png"),loadImage("colorButton.png3")};
      recorder= cp5.addButton("colour")
      .setPosition(826, 620)
      .setImages(colorButtons)
