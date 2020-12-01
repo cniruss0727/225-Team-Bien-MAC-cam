@@ -5,6 +5,7 @@ import milchreis.imageprocessing.*;
 import milchreis.imageprocessing.utils.*;
 import gab.opencv.*;
 import java.awt.Rectangle;
+import ddf.minim.*;
 
   ControlP5 cp5;
   ControlP5 savePictureCp5;
@@ -23,11 +24,13 @@ import java.awt.Rectangle;
   PImage currFrame;
   PImage recordImage;
   PImage processedImage;
+  AudioPlayer ScotlandTheBrave;
+  Minim minim;
 
 
   void setup() {
     size(960, 900);
-    frameRate(30);
+    frameRate(10);
     cp5 = new ControlP5(this);
     
     createSavePictureWindow();
@@ -111,34 +114,23 @@ import java.awt.Rectangle;
       .setTriggerEvent(Bang.RELEASE);
      
 //buttons    
-    
-    recorder= cp5.addButton("record")
-     .setPosition(60, 500)
-     .setImage(recordImage)
+      PImage[] recordButtons = {loadImage("recordButton1.png"),loadImage("recordButton2.png"),loadImage("recordButton3.png")};
+    recorder= cp5.addButton("takePhoto")
+     .setPosition(18, 615)
+     .setImages(recordButtons)
      .moveTo("default")
      .updateSize()
      ;
-    
-    cp5.addButton("scotSticker")
-     .setPosition(300, 600)
-     .moveTo("stickers")
-     .updateSize()
-     ;
-    
-    cp5.addButton("scotFace")
-      .setPosition(100,600)
-      .moveTo("stickers")
-      .updateSize()
-     ;
+     
    PImage[] filterButtons = {loadImage("filterButton4.png"),loadImage("filterButton3.png"),loadImage("filterButton4.png")};
      recorder= cp5.addButton("filter")
-     .setPosition(753, 614)
+     .setPosition(752, 616)
      .setImages(filterButtons)
      .moveTo("default")
      .updateSize()
      ;
      
-      PImage[] colorButtons = {loadImage("colorButton3.png"),loadImage("colorButton4.png"),loadImage("colorButton.png3")};
+      PImage[] colorButtons = {loadImage("colorButton3.png"),loadImage("colorButton4.png"),loadImage("colorButton3.png")};
      recorder= cp5.addButton("colour")
      .setPosition(826, 620)
      .setImages(colorButtons)
@@ -148,37 +140,55 @@ import java.awt.Rectangle;
      
      PImage[] stickerButtons = {loadImage("stickerButton.png"),loadImage("stickerButton2.png"),loadImage("stickerButton.png")};
      recorder= cp5.addButton("sticker")
-     .setPosition(892, 607)
+     .setPosition(891, 617)
      .setImages(stickerButtons)
      .moveTo("default")
      .updateSize()
      ;
      
-    recorder= cp5.addButton("macColorFilterButton")
-     .setPosition(300, 700)
-     .setSize(100, 30)
+     
+
+//filters buttons
+PImage[] preview1 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage("preview.jpg")};
+     recorder= cp5.addButton("macColorFilterButton")
+     .setPosition(120, 650)
+     .setImages(preview1)
+     .moveTo("filters picker")
+     .updateSize()
+     ;
+PImage[] preview2 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage("preview.jpg")};
+     recorder= cp5.addButton("P2")
+     .setPosition(290, 650)
+     .setImages(preview2)
+     .moveTo("filters picker")
+     .updateSize()
+      ;
+PImage[] preview3 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage("preview.jpg")};
+     recorder= cp5.addButton("P3")
+     .setPosition(460, 650)
+     .setImages(preview3)
+     .moveTo("filters picker")
+     .updateSize()
+     ;
+PImage[] preview4 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage("preview.jpg")};
+     recorder= cp5.addButton("scotFace")
+     .setPosition(630, 650)
+     .setImages(preview4)
      .moveTo("filters picker")
      .updateSize()
      ;
     
-    cp5.addButton("takePhoto")
-      .setPosition(800,750)
-      .setSize(100,50)
-      .moveTo("default")
-      .updateSize()
-      ;
-    
-  //filter selection bar
-    ButtonBar b = cp5.addButtonBar("filter bar")
-       .setPosition(300, 800)
-       .setSize(400, 30)
-       .addItems(split("a b c d e"," "))
-       .moveTo("filters picker");
-       ;
+  ////filter selection bar
+  //  ButtonBar b = cp5.addButtonBar("filter bar")
+  //     .setPosition(300, 800)
+  //     .setSize(400, 30)
+  //     .addItems(split("a b c d e"," "))
+  //     .moveTo("filters picker");
+  //     ;
        
-    b.changeItem("a","text","basic");
-    b.changeItem("b","text","MAC");
-    b.changeItem("c","text","stickers");
+    //b.changeItem("a","text","basic");
+    //b.changeItem("b","text","MAC");
+    //b.changeItem("c","text","stickers");
   
     String[] cameras = Capture.list();
     while(cameras.length == 0){
@@ -196,6 +206,9 @@ import java.awt.Rectangle;
     
     opencv = new OpenCV(this, 940, 580);
     opencv.loadCascade(OpenCV.CASCADE_FRONTALFACE);
+    
+    minim=new Minim(this);
+    ScotlandTheBrave = minim.loadFile("scotland the brave.mp3");
     cam.start();
   }
 
@@ -217,7 +230,7 @@ import java.awt.Rectangle;
   else {
     processedImage = cam;
   }
-  
+    processedImage = cam;  
   
   
   processedImage = contrastFilter.transform(processedImage,
@@ -229,13 +242,13 @@ import java.awt.Rectangle;
       tint(255, 255);
       g.removeCache(processedImage);
       
-   if(((Button)(cp5.getController("scotSticker"))).isOn()){
-   state = true;
-      //access the two position lists and create stickers on the frame
-      for(int i = 0; i < xposition.size(); i++) {
-        image(loadImage("stickerButton.png"), xposition.get(i), yposition.get(i));
-        }
-  }
+  // if(((Button)(cp5.getController("scotSticker"))).isOn()){
+  // state = true;
+  //    //access the two position lists and create stickers on the frame
+  //    for(int i = 0; i < xposition.size(); i++) {
+  //      image(loadImage("stickerButton.png"), xposition.get(i), yposition.get(i));
+  //      }
+  //}
   
   
   if(((Button)(cp5.getController("scotFace"))).isOn()){
@@ -296,5 +309,13 @@ public void takePhoto(){
       String fileName = ((Textfield)savePictureCp5.get("savePictureTextField")).getText();
       camWindowCopy.save("Photos//" + fileName + ".png");
     }
+}
+
+public void scotFace(){
+  if(ScotlandTheBrave.isPlaying()){
+    ScotlandTheBrave.pause();
+  }else {
+    ScotlandTheBrave.play();
+  }
 }
  
