@@ -53,6 +53,11 @@ Customized filters & Changing background
 * MAC Color Scheme filter is working
 * Need to solve RAM issue
 
+## 12.1
+* Picture taking and saving functionality completed
+* Button materials updated and better positioned. Filter preview buttons added
+* Basic pipe music background function working
+* Motion detection function working 
 
 
 
