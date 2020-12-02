@@ -154,6 +154,41 @@ PImage[] preview4 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage
      .moveTo("filters picker")
      .updateSize()
      ;
+
+//Pipemusic Control
+PImage[] speaker = {loadImage("speaker2.png"),loadImage("speaker.png"),loadImage("speaker.png")};
+     recorder= cp5.addButton("audioControl")
+     .setPosition(750, 780)
+     .setImages(speaker)
+     .moveTo("filters picker")
+     .updateSize()
+     ;
+      
+// Description for filters
+cp5.addTextlabel("Mac Color")
+   .setText("Mac Color")
+   .setPosition(120,845)
+   .setFont(createFont("Georgia",20))
+   . moveTo("filters picker")
+   ;
+cp5.addTextlabel("Mac Color")
+   .setText("Mac Color")
+   .setPosition(290,845)
+   .setFont(createFont("Georgia",20))
+   . moveTo("filters picker")
+   ;
+cp5.addTextlabel("Mac Background")
+   .setText("Mac Background")
+   .setPosition(460,845)
+   .setFont(createFont("Georgia",20))
+   . moveTo("filters picker")
+   ;
+cp5.addTextlabel("Scotland The Brave")
+   .setText("Scotland The Brave")
+   .setPosition(630,845)
+   .setFont(createFont("Georgia",20))
+   . moveTo("filters picker")
+   ;
       
       
  
@@ -180,6 +215,10 @@ PImage[] preview4 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage
   
   public void record(){
     println("Yo im recording!");
+  }
+  
+  public void audioControl(){
+    
   }
   
   public void filter(){

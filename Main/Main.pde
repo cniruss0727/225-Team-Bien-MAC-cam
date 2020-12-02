@@ -175,6 +175,14 @@ PImage[] preview4 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage
      .moveTo("filters picker")
      .updateSize()
      ;
+     
+PImage[] speaker = {loadImage("speaker2.png"),loadImage("speaker.png"),loadImage("speaker.png")};
+      recorder= cp5.addButton("audioControl")
+     .setPosition(750, 780)
+     .setImages(speaker)
+     .moveTo("filters picker")
+     .updateSize()
+     ;
     
   ////filter selection bar
   //  ButtonBar b = cp5.addButtonBar("filter bar")
@@ -284,6 +292,14 @@ createStickerButtons();
    cp5.getTab("stickers").bringToFront();
  }
  
+ public void audioControl(){
+  if(ScotlandTheBrave.isPlaying()){
+    ScotlandTheBrave.pause();
+  }else {
+    ScotlandTheBrave.play();
+  }
+ }
+ 
  public void mouseClicked() {
     //Check to see if the boolean "state" is true so that we could pass in coordinates
       for(StickerButton button: stickerButtons){
@@ -325,5 +341,7 @@ public void scotFace(){
   }else {
     ScotlandTheBrave.play();
   }
+  
+
 }
  
