@@ -4,7 +4,7 @@ void createSavePictureWindow(){
   savePictureWindow = GWindow.getWindow(this, "savePictureWindow", 650, 700, 400, 200, JAVA2D);
   savePictureWindow.setVisible(false);
   savePictureWindow.addDrawHandler(this, "drawSaveWindow");
-  savePictureWindow.setAlwaysOnTop(true);
+  savePictureWindow.setAlwaysOnTop(true); 
   savePictureWindow.setTitle("");
   //savePictureWindow.setActionOnClose(G4P.CLOSE_WINDOW);
   

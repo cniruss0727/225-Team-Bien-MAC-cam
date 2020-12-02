@@ -15,17 +15,18 @@ import ddf.minim.*;
   Button recorder;
   Rectangle[] faces;
   GWindow savePictureWindow;
+  ArrayList<Sticker> stickers = new ArrayList<Sticker>();
+  HashMap<String, PImage[]> stickerImageMap = new HashMap<String, PImage[]>();
+  ArrayList<StickerButton> stickerButtons = new ArrayList<StickerButton>();
   OpenCV opencv;
-  boolean state;
   float x;
   float y;
-  FloatList xposition = new FloatList();
-  FloatList yposition = new FloatList();
   PImage currFrame;
   PImage recordImage;
   PImage processedImage;
   AudioPlayer ScotlandTheBrave;
   Minim minim;
+  int frameNumber = 0;
 
 
   void setup() {
@@ -34,12 +35,9 @@ import ddf.minim.*;
     cp5 = new ControlP5(this);
     
     createSavePictureWindow();
-    
-    
-    
+   
     macColorFilter = new MacColorFilter(this);
     contrastFilter = new ContrastFilter(this);
-    recordImage = loadImage("macButton.png");
     
     //Tabs   
     cp5.getTab("default")
@@ -189,6 +187,9 @@ PImage[] preview4 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage
     //b.changeItem("a","text","basic");
     //b.changeItem("b","text","MAC");
     //b.changeItem("c","text","stickers");
+    
+loadStickerImages();
+createStickerButtons();
   
     String[] cameras = Capture.list();
     while(cameras.length == 0){
@@ -250,6 +251,10 @@ PImage[] preview4 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage
   //      }
   //}
   
+  for(Sticker sticker : stickers){
+    image(sticker.getActiveImage(frameNumber, 5), sticker.getX(), sticker.getY());
+  }
+  
   
   if(((Button)(cp5.getController("scotFace"))).isOn()){
       opencv.loadImage(cam);   
@@ -261,7 +266,7 @@ PImage[] preview4 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage
       } 
   }
   
-  
+  frameNumber++;
   }
   
    public void record(){
@@ -281,12 +286,15 @@ PImage[] preview4 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage
  
  public void mouseClicked() {
     //Check to see if the boolean "state" is true so that we could pass in coordinates
-    if (state == true) {
-    x = mouseX;
-    y = mouseY;
-    xposition.append(x);
-    yposition.append(y);
-    }    
+      for(StickerButton button: stickerButtons){
+        if(button.getButton().isOn() && mouseY < 600 && cp5.getTab("stickers").isActive()){
+          Sticker sticker = button.getSticker();
+          float dw = sticker.getImages()[0].width;
+          float dh = sticker.getImages()[0].height;
+          stickers.add(new Sticker(sticker.getImages(), mouseX - dw/2, mouseY - dh/2, true));
+          break;
+        }
+      }
   }
 
 public void resetSliders(){
