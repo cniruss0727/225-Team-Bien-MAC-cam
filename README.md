@@ -70,5 +70,8 @@ Customized filters & Changing background
 * Start Looking At Zoom access
 
 
-
-
+## 12.3
+* Buttons has visual effects to show their status now
+* OBS can be used to connect our filters to zoom
+* Progress in background detection function, made seperate class
+* Got President Rivera's authorization of using her pictures
