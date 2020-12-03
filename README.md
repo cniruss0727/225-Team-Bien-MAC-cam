@@ -60,5 +60,15 @@ Customized filters & Changing background
 * Motion detection function working 
 
 
+## 12.2
+* Need to render the audio control button the visuo mute effect
+* Create a array for buttons so that when switching to a new filter, all the other filters are turned off
+* Give filter preview buttons activation effect.
+* Email President Rivera for permission to use her photos as stickers
+* Keep working on background subtraction
+* Solving minor issues with dynamic stickers
+* Start Looking At Zoom access
+
+
 
 
