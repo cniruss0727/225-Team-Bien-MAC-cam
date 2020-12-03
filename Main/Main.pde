@@ -151,8 +151,8 @@ cp5.addTextlabel("Mac Color")
    .setFont(createFont("Georgia",20))
    . moveTo("filters picker")
    ;
-cp5.addTextlabel("Mac Color")
-   .setText("Mac Color")
+cp5.addTextlabel("Mac ??")
+   .setText("Mac ??")
    .setPosition(290,845)
    .setFont(createFont("Georgia",20))
    . moveTo("filters picker")
@@ -207,7 +207,7 @@ PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),load
      .setImages(speaker)
      .moveTo("filters picker")
      .updateSize()
-     .hide()
+
      ;
     
   ////filter selection bar
@@ -379,12 +379,12 @@ public void takePhoto(){
 public void scotFace(){
   
     ScotlandTheBrave.play();
-    cp5.getController("audioControl").show();
     
     PImage[] preview4On = {loadImage("preview4On.jpg"),loadImage("preview4On.jpg"),loadImage("preview4On.jpg")};
     PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview4.jpg")};
   if(!((Button)(cp5.getController("scotFace"))).isOn()){
        cp5.getController("scotFace").setImages(preview4Off);
+         ScotlandTheBrave.pause();
   }
   if(((Button)(cp5.getController("scotFace"))).isOn()){
        cp5.getController("scotFace").setImages(preview4On);
@@ -394,7 +394,7 @@ public void P2(){
 if(ScotlandTheBrave.isPlaying()){
     ScotlandTheBrave.pause();
   }
- cp5.getController("audioControl").hide();
+
   
 }
 
@@ -402,7 +402,7 @@ public void P3(){
 if(ScotlandTheBrave.isPlaying()){
     ScotlandTheBrave.pause();
   }
-cp5.getController("audioControl").hide();
+
   
 }
  
