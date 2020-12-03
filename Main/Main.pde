@@ -144,7 +144,32 @@ import ddf.minim.*;
      .updateSize()
      ;
      
-     
+// Description for filters
+cp5.addTextlabel("Mac Color")
+   .setText("Mac Color")
+   .setPosition(120,845)
+   .setFont(createFont("Georgia",20))
+   . moveTo("filters picker")
+   ;
+cp5.addTextlabel("Mac Color")
+   .setText("Mac Color")
+   .setPosition(290,845)
+   .setFont(createFont("Georgia",20))
+   . moveTo("filters picker")
+   ;
+cp5.addTextlabel("Mac Background")
+   .setText("Mac Background")
+   .setPosition(460,845)
+   .setFont(createFont("Georgia",20))
+   . moveTo("filters picker")
+   ;
+cp5.addTextlabel("Scotland The Brave")
+   .setText("Scotland The Brave")
+   .setPosition(630,845)
+   .setFont(createFont("Georgia",20))
+   . moveTo("filters picker")
+   ;
+      
 
 //filters buttons
 PImage[] preview1 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage("preview.jpg")};
