@@ -294,17 +294,7 @@ createStickerButtons();
    cp5.getTab("stickers").bringToFront();
  }
  
-  public void P4(){
-    
-    PImage[] preview4On = {loadImage("preview4On.jpg"),loadImage("preview4On.jpg"),loadImage("preview4On.jpg")};
-    PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview4.jpg")};
-  if(!((Button)(cp5.getController("P4"))).isOn()){
-       cp5.getController("P4").setImages(preview4Off);
-  }
-  if(((Button)(cp5.getController("P4"))).isOn()){
-       cp5.getController("P4").setImages(preview4On);
-  }
-  }
+
  
   public void audioControl(){
     PImage[] speaker = {loadImage("speaker2.png"),loadImage("speaker2.png"),loadImage("speaker2.png")};
@@ -362,5 +352,27 @@ public void takePhoto(){
 
 public void scotFace(){
     ScotlandTheBrave.play();
+    
+    PImage[] preview4On = {loadImage("preview4On.jpg"),loadImage("preview4On.jpg"),loadImage("preview4On.jpg")};
+    PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview4.jpg")};
+  if(!((Button)(cp5.getController("scotFace"))).isOn()){
+       cp5.getController("scotFace").setImages(preview4Off);
   }
+  if(((Button)(cp5.getController("scotFace"))).isOn()){
+       cp5.getController("scotFace").setImages(preview4On);
+  }
+  }
+public void P2(){
+if(ScotlandTheBrave.isPlaying()){
+    ScotlandTheBrave.pause();
+  }
+  
+}
+
+public void P3(){
+if(ScotlandTheBrave.isPlaying()){
+    ScotlandTheBrave.pause();
+  }
+  
+}
  

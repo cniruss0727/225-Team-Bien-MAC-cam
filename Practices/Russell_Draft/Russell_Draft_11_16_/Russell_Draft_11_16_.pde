@@ -151,7 +151,7 @@ PImage[] preview3 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage
      .updateSize()
      ;
 
-PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview4.jpg")};
+ PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview4.jpg")};
      recorder= cp5.addButton("P4")
      .setPosition(630, 650)
      .setImages(preview4Off)
@@ -220,31 +220,24 @@ cp5.addTextlabel("Scotland The Brave")
   public void record(){
     println("Yo im recording!");
   }
-  public void P4(){
-    
+  public void P4(){ 
     PImage[] preview4On = {loadImage("preview4On.jpg"),loadImage("preview4On.jpg"),loadImage("preview4On.jpg")};
     PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview4.jpg")};
   if(!((Button)(cp5.getController("P4"))).isOn()){
        cp5.getController("P4").setImages(preview4Off);
   }
-  if(!((Button)(cp5.getController("P4"))).isOn()){
+  if(((Button)(cp5.getController("P4"))).isOn()){
        cp5.getController("P4").setImages(preview4On);
   }
 }
   public void audioControl(){
     PImage[] speaker = {loadImage("speaker2.png"),loadImage("speaker2.png"),loadImage("speaker2.png")};
     PImage[] speakerOff = {loadImage("speaker3.png"),loadImage("speaker3.png"),loadImage("speaker3.png")};
-
-
-     if(((Button)(cp5.getController("audioControl"))).isOn()){
+  if(((Button)(cp5.getController("audioControl"))).isOn()){
        cp5.getController("audioControl").setImages(speakerOff);
-       
-   
   }
   if(!((Button)(cp5.getController("audioControl"))).isOn()){
-       cp5.getController("audioControl").setImages(speaker);
-       
-   
+       cp5.getController("audioControl").setImages(speaker);  
   }
     
     
