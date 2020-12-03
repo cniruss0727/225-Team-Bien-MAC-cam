@@ -239,8 +239,6 @@ createStickerButtons();
   else {
     processedImage = cam;
   }
-    processedImage = cam;  
-  
   
   processedImage = contrastFilter.transform(processedImage,
       Math.round(cp5.get("Brightness").getValue()),
@@ -274,6 +272,10 @@ createStickerButtons();
       } 
   }
   
+  //if(!((Button)cp5.get("audioControl")).isOn() && ScotlandTheBrave.isPlaying() && !((Button)cp5.get("scotFace")).isOn()){
+  //  ScotlandTheBrave.pause();
+  //}
+  
   frameNumber++;
   }
   
@@ -296,7 +298,7 @@ createStickerButtons();
   if(ScotlandTheBrave.isPlaying()){
     ScotlandTheBrave.pause();
   }else {
-    ScotlandTheBrave.play();
+      ScotlandTheBrave.play();
   }
  }
  
@@ -336,12 +338,6 @@ public void takePhoto(){
 }
 
 public void scotFace(){
-  if(ScotlandTheBrave.isPlaying()){
-    ScotlandTheBrave.pause();
-  }else {
     ScotlandTheBrave.play();
   }
-  
-
-}
  
