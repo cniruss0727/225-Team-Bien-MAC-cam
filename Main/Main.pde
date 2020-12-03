@@ -168,15 +168,15 @@ PImage[] preview3 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage
      .moveTo("filters picker")
      .updateSize()
      ;
-PImage[] preview4 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage("preview.jpg")};
+PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview4.jpg")};
      recorder= cp5.addButton("scotFace")
      .setPosition(630, 650)
-     .setImages(preview4)
+     .setImages(preview4Off)
      .moveTo("filters picker")
      .updateSize()
      ;
      
-PImage[] speaker = {loadImage("speaker2.png"),loadImage("speaker.png"),loadImage("speaker.png")};
+  PImage[] speaker = {loadImage("speaker2.png"),loadImage("speaker2.png"),loadImage("speaker2.png")};
       recorder= cp5.addButton("audioControl")
      .setPosition(750, 780)
      .setImages(speaker)
@@ -294,7 +294,30 @@ createStickerButtons();
    cp5.getTab("stickers").bringToFront();
  }
  
- public void audioControl(){
+  public void P4(){
+    
+    PImage[] preview4On = {loadImage("preview4On.jpg"),loadImage("preview4On.jpg"),loadImage("preview4On.jpg")};
+    PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview4.jpg")};
+  if(!((Button)(cp5.getController("P4"))).isOn()){
+       cp5.getController("P4").setImages(preview4Off);
+  }
+  if(((Button)(cp5.getController("P4"))).isOn()){
+       cp5.getController("P4").setImages(preview4On);
+  }
+  }
+ 
+  public void audioControl(){
+    PImage[] speaker = {loadImage("speaker2.png"),loadImage("speaker2.png"),loadImage("speaker2.png")};
+    PImage[] speakerOff = {loadImage("speaker3.png"),loadImage("speaker3.png"),loadImage("speaker3.png")};
+
+
+  if(ScotlandTheBrave.isPlaying()){
+       cp5.getController("audioControl").setImages(speakerOff); 
+  }
+  if(!ScotlandTheBrave.isPlaying()){
+       cp5.getController("audioControl").setImages(speaker);
+  }
+    
   if(ScotlandTheBrave.isPlaying()){
     ScotlandTheBrave.pause();
   }else {

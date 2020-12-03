@@ -151,7 +151,7 @@ PImage[] preview3 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage
      .updateSize()
      ;
 
-PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview.jpg")};
+PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview4.jpg")};
      recorder= cp5.addButton("P4")
      .setPosition(630, 650)
      .setImages(preview4Off)
@@ -224,7 +224,7 @@ cp5.addTextlabel("Scotland The Brave")
     
     PImage[] preview4On = {loadImage("preview4On.jpg"),loadImage("preview4On.jpg"),loadImage("preview4On.jpg")};
     PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview4.jpg")};
-  if(((Button)(cp5.getController("P4"))).isOn()){
+  if(!((Button)(cp5.getController("P4"))).isOn()){
        cp5.getController("P4").setImages(preview4Off);
   }
   if(!((Button)(cp5.getController("P4"))).isOn()){
