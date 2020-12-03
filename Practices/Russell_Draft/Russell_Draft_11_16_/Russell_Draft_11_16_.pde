@@ -10,10 +10,13 @@ import java.util.*;
   Button recorder;
   
   PImage recordImage;
-
+  
+  
 
 
   void setup() {
+    
+  
     size(960, 900);
     cp5 = new ControlP5(this);
     recordImage = loadImage("macButton.png");
@@ -147,16 +150,17 @@ PImage[] preview3 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage
      .moveTo("filters picker")
      .updateSize()
      ;
-PImage[] preview4 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage("preview.jpg")};
+
+PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview.jpg")};
      recorder= cp5.addButton("P4")
      .setPosition(630, 650)
-     .setImages(preview4)
+     .setImages(preview4Off)
      .moveTo("filters picker")
      .updateSize()
      ;
 
 //Pipemusic Control
-PImage[] speaker = {loadImage("speaker2.png"),loadImage("speaker.png"),loadImage("speaker.png")};
+PImage[] speaker = {loadImage("speaker2.png"),loadImage("speaker2.png"),loadImage("speaker2.png")};
      recorder= cp5.addButton("audioControl")
      .setPosition(750, 780)
      .setImages(speaker)
@@ -216,8 +220,34 @@ cp5.addTextlabel("Scotland The Brave")
   public void record(){
     println("Yo im recording!");
   }
-  
+  public void P4(){
+    
+    PImage[] preview4On = {loadImage("preview4On.jpg"),loadImage("preview4On.jpg"),loadImage("preview4On.jpg")};
+    PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview4.jpg")};
+  if(((Button)(cp5.getController("P4"))).isOn()){
+       cp5.getController("P4").setImages(preview4Off);
+  }
+  if(!((Button)(cp5.getController("P4"))).isOn()){
+       cp5.getController("P4").setImages(preview4On);
+  }
+}
   public void audioControl(){
+    PImage[] speaker = {loadImage("speaker2.png"),loadImage("speaker2.png"),loadImage("speaker2.png")};
+    PImage[] speakerOff = {loadImage("speaker3.png"),loadImage("speaker3.png"),loadImage("speaker3.png")};
+
+
+     if(((Button)(cp5.getController("audioControl"))).isOn()){
+       cp5.getController("audioControl").setImages(speakerOff);
+       
+   
+  }
+  if(!((Button)(cp5.getController("audioControl"))).isOn()){
+       cp5.getController("audioControl").setImages(speaker);
+       
+   
+  }
+    
+    
     
   }
   
