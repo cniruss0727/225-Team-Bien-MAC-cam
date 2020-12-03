@@ -182,6 +182,7 @@ PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),load
      .setImages(speaker)
      .moveTo("filters picker")
      .updateSize()
+     .hide()
      ;
     
   ////filter selection bar
@@ -351,7 +352,9 @@ public void takePhoto(){
 }
 
 public void scotFace(){
+  
     ScotlandTheBrave.play();
+    cp5.getController("audioControl").show();
     
     PImage[] preview4On = {loadImage("preview4On.jpg"),loadImage("preview4On.jpg"),loadImage("preview4On.jpg")};
     PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview4.jpg")};
@@ -366,6 +369,7 @@ public void P2(){
 if(ScotlandTheBrave.isPlaying()){
     ScotlandTheBrave.pause();
   }
+ cp5.getController("audioControl").hide();
   
 }
 
@@ -373,6 +377,7 @@ public void P3(){
 if(ScotlandTheBrave.isPlaying()){
     ScotlandTheBrave.pause();
   }
+cp5.getController("audioControl").hide();
   
 }
  
