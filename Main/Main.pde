@@ -24,9 +24,11 @@ import ddf.minim.*;
   PImage currFrame;
   PImage recordImage;
   PImage processedImage;
+  PImage ScotButtonImage;
   AudioPlayer ScotlandTheBrave;
   Minim minim;
   int frameNumber = 0;
+  ArrayList<ScotSticker> scotStickers = new ArrayList<ScotSticker>();
 
 
   void setup() {
@@ -224,7 +226,7 @@ PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),load
     
 loadStickerImages();
 createStickerButtons();
-  
+createScotStickerButton();
     String[] cameras = Capture.list();
     while(cameras.length == 0){
         println("There are no cameras available for capture.");
@@ -285,6 +287,11 @@ createStickerButtons();
   
   for(Sticker sticker : stickers){
     image(sticker.getActiveImage(frameNumber, 5), sticker.getX(), sticker.getY());
+  }
+  
+  
+  for(ScotSticker a :scotStickers) {
+    image(a.getImages(), a.getX(), a.getY());
   }
   
   
@@ -352,6 +359,15 @@ createStickerButtons();
           break;
         }
       }
+      if(((Button)(cp5.getController("ScotSticker"))).isOn()) {
+        //System.out.println(5);
+        if(mouseY < 600){
+        scotStickers.add(new ScotSticker(mouseX, mouseY));
+        
+        }
+      }
+      
+      
   }
 
 public void resetSliders(){
