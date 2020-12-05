@@ -34,7 +34,7 @@ import ddf.minim.*;
   void setup() {
     size(960, 900);
     frameRate(10);
-    cp5 = new ControlP5(this);
+    cp5 = new ControlP5(this, new ControlFont(createFont("Georgia", 14)));
     
     createSavePictureWindow();
    
@@ -112,6 +112,8 @@ import ddf.minim.*;
       .setSize(100, 60)
       .moveTo("color adjustment")
       .setTriggerEvent(Bang.RELEASE);
+      
+    resetSliders();
      
 //buttons    
       PImage[] recordButtons = {loadImage("recordButton1.png"),loadImage("recordButton2.png"),loadImage("recordButton3.png")};
@@ -256,9 +258,6 @@ createScotStickerButton();
      
     if (cam.available()){
     cam.read();
-    
-    
-    
   }
   
   if(((Button)(cp5.getController("macColorFilterButton"))).isOn()){
@@ -268,14 +267,17 @@ createScotStickerButton();
     processedImage = cam;
   }
   
+  if(!slidersAtDefault()){
   processedImage = contrastFilter.transform(processedImage,
       Math.round(cp5.get("Brightness").getValue()),
       cp5.get("Contrast").getValue(),
       cp5.get("Saturation").getValue());
       tint(((ColorWheel)(cp5.get("Hue"))).getRGB());
-      image(processedImage, 10, 10);
-      tint(255, 255);
-      g.removeCache(processedImage);
+  }
+  
+  image(processedImage, 10, 10);
+  tint(255, 255);
+  g.removeCache(processedImage);
       
   // if(((Button)(cp5.getController("scotSticker"))).isOn()){
   // state = true;
@@ -296,13 +298,16 @@ createScotStickerButton();
   
   
   if(((Button)(cp5.getController("scotFace"))).isOn()){
-      opencv.loadImage(cam);   
-      faces = opencv.detect();
+      opencv.loadImage(cam);  
+      faces = opencv.detect(1.2, 2, 0, width/8, width);
       if (faces != null) {
       for (int i = 0; i < faces.length; i++) {
         image(loadImage("macalester logo.png"), faces[i].x, faces[i].y, faces[i].width, faces[i].height);
         }
-      } 
+      }
+      if(frameNumber % 5 == 0){
+        System.gc();
+      }
   }
   
   //if(!((Button)cp5.get("audioControl")).isOn() && ScotlandTheBrave.isPlaying() && !((Button)cp5.get("scotFace")).isOn()){
@@ -310,7 +315,7 @@ createScotStickerButton();
   //}
   
   frameNumber++;
-  }
+}
   
    public void record(){
     println("Yo im recording!");
@@ -379,10 +384,21 @@ public void resetSliders(){
       .setSaturation(1);
   }
   
+public boolean slidersAtDefault(){
+  if(cp5.get("Saturation").getValue() != 1 ||
+      cp5.get("Brightness").getValue() != 0 ||
+      cp5.get("Contrast").getValue() != 1 ||
+      ((ColorWheel)cp5.get("Hue")).getRGB() != color(255, 255, 255)){
+        return false;
+      }
+   return true; 
+  }
+  
 public void takePhoto(){
     PImage camWindowCopy = get(20, 20, 940, 580);
     ((Textfield)savePictureCp5.get("savePictureTextField")).setText("");
     savePictureWindow.setVisible(true);
+    delay(100);
     while(savePictureWindow.isVisible()){
       delay(1000);
     }
