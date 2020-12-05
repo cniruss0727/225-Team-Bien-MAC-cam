@@ -155,8 +155,8 @@ cp5.addTextlabel("Mac Color")
    .setFont(createFont("Georgia",20))
    . moveTo("filters picker")
    ;
-cp5.addTextlabel("Mac ??")
-   .setText("Mac ??")
+cp5.addTextlabel("Scot Face")
+   .setText("Scot Face")
    .setPosition(290,845)
    .setFont(createFont("Georgia",20))
    . moveTo("filters picker")
@@ -303,6 +303,17 @@ createScotStickerButton();
       if (faces != null) {
       for (int i = 0; i < faces.length; i++) {
         image(loadImage("macalester logo.png"), faces[i].x, faces[i].y, faces[i].width, faces[i].height);
+        }
+      }
+      if(frameNumber % 5 == 0){
+        System.gc();
+      }
+  } else if(((Button)(cp5.getController("P2"))).isOn()){
+      opencv.loadImage(cam);  
+      faces = opencv.detect(1.2, 2, 0, width/8, width);
+      if (faces != null) {
+      for (int i = 0; i < faces.length; i++) {
+        image(loadImage("scotImage.png"), faces[i].x - faces[i].width/2.7, faces[i].y - faces[i].height/2.7, faces[i].width * 1.5, faces[i].height * 1.5);
         }
       }
       if(frameNumber % 5 == 0){
