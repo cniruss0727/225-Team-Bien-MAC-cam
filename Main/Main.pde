@@ -176,10 +176,10 @@ cp5.addTextlabel("Scotland The Brave")
       
 
 //filters buttons
-PImage[] preview1 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage("preview.jpg")};
+PImage[] preview1Off = {loadImage("preview1.jpg"),loadImage("preview1.jpg"),loadImage("preview1.jpg")};
      recorder= cp5.addButton("macColorFilterButton")
      .setPosition(120, 650)
-     .setImages(preview1)
+     .setImages(preview1Off)
      .moveTo("filters picker")
      .updateSize()
      ;
@@ -433,6 +433,20 @@ public void scotFace(){
        cp5.getController("scotFace").setImages(preview4On);
   }
   }
+  
+public void macColorFilterButton(){
+  ScotlandTheBrave.pause();
+   PImage[] preview1On = {loadImage("preview1On.jpg"),loadImage("preview1On.jpg"),loadImage("preview1On.jpg")};
+   PImage[] preview1Off = {loadImage("preview1.jpg"),loadImage("preview1.jpg"),loadImage("preview1.jpg")};
+   if(!((Button)(cp5.getController("macColorFilterButton"))).isOn()){
+       cp5.getController("macColorFilterButton").setImages(preview1Off);
+         ScotlandTheBrave.pause();
+  }
+  if(((Button)(cp5.getController("macColorFilterButton"))).isOn()){
+       cp5.getController("macColorFilterButton").setImages(preview1On);
+  }
+}
+
 public void P2(){
 if(ScotlandTheBrave.isPlaying()){
     ScotlandTheBrave.pause();
