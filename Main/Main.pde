@@ -176,7 +176,7 @@ cp5.addTextlabel("Scotland The Brave")
       
 
 //filters buttons
-PImage[] preview1Off = {loadImage("preview1.jpg"),loadImage("preview1.jpg"),loadImage("preview1.jpg")};
+PImage[] preview1Off = {loadImage("preview1.JPG"),loadImage("preview1.JPG"),loadImage("preview1.JPG")};
      recorder= cp5.addButton("macColorFilterButton")
      .setPosition(120, 650)
      .setImages(preview1Off)
@@ -436,8 +436,8 @@ public void scotFace(){
   
 public void macColorFilterButton(){
   ScotlandTheBrave.pause();
-   PImage[] preview1On = {loadImage("preview1On.jpg"),loadImage("preview1On.jpg"),loadImage("preview1On.jpg")};
-   PImage[] preview1Off = {loadImage("preview1.jpg"),loadImage("preview1.jpg"),loadImage("preview1.jpg")};
+   PImage[] preview1On = {loadImage("preview1On.JPG"),loadImage("preview1On.JPG"),loadImage("preview1On.JPG")};
+   PImage[] preview1Off = {loadImage("preview1.JPG"),loadImage("preview1.JPG"),loadImage("preview1.JPG")};
    if(!((Button)(cp5.getController("macColorFilterButton"))).isOn()){
        cp5.getController("macColorFilterButton").setImages(preview1Off);
          ScotlandTheBrave.pause();
