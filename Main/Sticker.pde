@@ -84,16 +84,20 @@ void loadStickerImages(){
 //Creates buttons for the sticker tab. Should be called in setup AFTER loading sticker images and creating the sticker tab.
 void createStickerButtons(){
   Button macHeartButton = cp5.addButton("MacHeartButton")
-      .setPosition(400, 600)
-      .setImages(stickerImageMap.get("MacHeart")[0])
-      .moveTo("stickers");
+      .setSwitch(true)
+      .setPosition(400, 700)
+      .setImages(stickerImageMap.get("MacHeart")[0], stickerImageMap.get("MacHeart")[1], stickerImageMap.get("MacHeart")[1], addBorderToImage(stickerImageMap.get("MacHeart")[0], 4, color(0,0,0)))
+      .moveTo("stickers")
+      .updateSize();
   
   Sticker macHeartSticker = new Sticker(stickerImageMap.get("MacHeart"), 0, 0, true);
       
   Button goScotsButton = cp5.addButton("GoScotsButton")
-      .setPosition(500, 600)
-      .setImages(stickerImageMap.get("GoScots")[0])
-      .moveTo("stickers");
+      .setPosition(600, 700)
+      .setSwitch(true)
+      .setImages(stickerImageMap.get("GoScots")[0], stickerImageMap.get("GoScots")[1], stickerImageMap.get("GoScots")[1], addBorderToImage(stickerImageMap.get("GoScots")[0], 4, color(0,0,0)))
+      .moveTo("stickers")
+      .updateSize();
       
   Sticker goScotsSticker = new Sticker(stickerImageMap.get("GoScots"), 0, 0, true);
   
@@ -102,4 +106,27 @@ void createStickerButtons(){
   
   stickerButtons.add(macHeartStickerButton);
   stickerButtons.add(goScotsStickerButton);
+  
+  cp5.addBang("clearStickers")
+    .setPosition(800, 700)
+    .setSize(100, 80)
+    .setLabel("Clear Stickers")
+    .moveTo("stickers");
+}
+
+public PImage addBorderToImage(PImage img, int borderWidth, int col){
+  PGraphics buffer = createGraphics(img.width + borderWidth*2, img.height + borderWidth*2);
+  buffer.beginDraw();
+  buffer.noFill();
+  buffer.strokeWeight(borderWidth);
+  buffer.image(img, borderWidth, borderWidth);
+  buffer.stroke(col);
+  buffer.rect(0, 0, img.width + borderWidth, img.height + borderWidth);
+  buffer.endDraw();
+  return buffer.get(0, 0, img.width+borderWidth*2, img.height+borderWidth*2);
+}
+
+public void clearStickers(){
+  stickers.clear();
+  scotStickers.clear();
 }

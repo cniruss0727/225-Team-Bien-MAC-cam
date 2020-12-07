@@ -66,7 +66,7 @@ import ddf.minim.*;
  
  //All the sliders for color adjustment   
     cp5.addSlider("Saturation")
-     .setPosition(80,680)
+     .setPosition(100,680)
      .setSize(200,20)
      .setColorActive(color(247, 171, 7))
      .setColorForeground(color(247, 171, 7))
@@ -78,7 +78,7 @@ import ddf.minim.*;
      ;
      
     cp5.addSlider("Brightness")
-     .setPosition(80,720)
+     .setPosition(100,720)
      .setSize(200,20)
      .setColorActive(color(242, 165, 0))
      .setColorForeground(color(242, 165, 0))
@@ -90,7 +90,7 @@ import ddf.minim.*;
      ;
      
     cp5.addSlider("Contrast")
-     .setPosition(80,760)
+     .setPosition(100,760)
      .setSize(200,20)
      .setColorActive(color(214, 147, 2))
      .setColorForeground(color(214, 147, 2))

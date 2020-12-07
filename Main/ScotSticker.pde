@@ -33,8 +33,12 @@ class ScotSticker{
 }
 
 void createScotStickerButton() {
+  PImage img = loadImage("preview.jpg");
   Button ScotStickerButton = cp5.addButton("ScotSticker")
-      .setPosition(300, 600)
+      .setPosition(200, 650)
+      .setSwitch(true)
+      .setImages(img, img, img, addBorderToImage(img, 4, color(0,0,0)))
       //.setImages(ScotButtonImage)
-      .moveTo("stickers");
+      .moveTo("stickers")
+      .updateSize();
 }
