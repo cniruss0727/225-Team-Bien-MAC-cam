@@ -42,27 +42,35 @@ import ddf.minim.*;
     
      //Tabs   
     cp5.getTab("default")
-    .setColorBackground(color(121, 172, 247))
+    .setColorBackground(color(255))
+    .setColorForeground(color(255))
      .setColorLabel(color(255))
-     .setColorActive(color(255,128,0))
-      .setAlwaysActive(true)
-      ;
+     .setColorActive(color(255))
+     
+      .setAlwaysActive(true);
+     
+    //  .setPosition(-10,-10);
+     // .setVisible(false);
       
      cp5.addTab("filters picker")
-     .setColorBackground(color(121, 172, 247))
+     .setColorBackground(color(255))
+     .setColorForeground(color(255))
      .setColorLabel(color(255))
-     .setColorActive(color(255,128,0))
-     ;
+     .setColorActive(color(255));
+    // .hideBar();
+     // .setVisible(false);
     
     cp5.addTab("color adjustment")
-     .setColorBackground(color(22, 112, 245))
+     .setColorBackground(color(255))
+     .setColorForeground(color(255))
      .setColorLabel(color(255))
-     .setColorActive(color(255,128,0));
+     .setColorActive(color(255));
      
         cp5.addTab("stickers")  
-     .setColorBackground(color(2, 68, 166))
+     .setColorBackground(color(255))
+     .setColorForeground(color(255))
      .setColorLabel(color(255))
-     .setColorActive(color(255,128,0));
+     .setColorActive(color(255));
  
  //All the sliders for color adjustment   
     cp5.addSlider("Saturation")
