@@ -7,9 +7,6 @@ ControlP5 cp5;
 Button switchTo;
 float threshold = 25;
 
-float motionX = 0;
-float motionY = 0;
-
 void setup() {
   size(700, 600);
   cam = new Capture(this, 700, 300);
@@ -36,10 +33,6 @@ void draw() {
   
   threshold = 50;
 
-  int count = 0;
-  
-  float avgX = 0;
-  float avgY = 0;
   loadPixels();
   if(switchTo.isOn()) {
     
@@ -59,10 +52,7 @@ void draw() {
       float difference = distSq(r1, g1, b1, r2, g2, b2); 
 
       if (difference > threshold*threshold) {
-        
-        avgX += x;
-        avgY += y;
-        count++;
+    
         pixels[loc] = color(0,0,0);
       } else {
         pixels[loc] = color(255,255,255);
