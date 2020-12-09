@@ -1,34 +1,35 @@
 public void createUI(){
  //Tabs   
     cp5.getTab("default")
-    .setColorBackground(color(255))
-    .setColorForeground(color(255))
-     .setColorLabel(color(255))
-     .setColorActive(color(255))
+.setColorBackground(color(255,255,255, 1))
+     .setColorForeground(color(255,255,255,1))
+     .setColorActive(color(255,255,255,1))
+     .setLabel("")
       .setAlwaysActive(true);
      
     //  .setPosition(-10,-10);
      // .setVisible(false);
       
      cp5.addTab("filters picker")
-     .setColorBackground(color(255))
-     .setColorForeground(color(255))
-     .setColorLabel(color(255))
-     .setColorActive(color(255));
-    // .hideBar();
-     // .setVisible(false);
+.setColorBackground(color(255,255,255, 1))
+     .setColorForeground(color(255,255,255,1))
+     .setColorActive(color(255,255,255,1))
+     .setLabel("");
+
     
     cp5.addTab("color adjustment")
-     .setColorBackground(color(255))
-     .setColorForeground(color(255))
-     .setColorLabel(color(255))
-     .setColorActive(color(255));
+.setColorBackground(color(255,255,255, 1))
+     .setColorForeground(color(255,255,255,1))
+     .setColorActive(color(255,255,255,1))
+     .setLabel("");
+
      
         cp5.addTab("stickers")  
-     .setColorBackground(color(255))
-     .setColorForeground(color(255))
-     .setColorLabel(color(255))
-     .setColorActive(color(255));
+.setColorBackground(color(255,255,255, 1))
+     .setColorForeground(color(255,255,255,1))
+     .setColorActive(color(255,255,255,1))
+     .setLabel("");
+
  
  //All the sliders for color adjustment   
     cp5.addSlider("Saturation")
@@ -36,6 +37,7 @@ public void createUI(){
      .setSize(200,20)
      .setColorActive(color(247, 171, 7))
      .setColorForeground(color(247, 171, 7))
+     .setColorBackground(color(200, 200, 200))
      .setWidth(300)
      .setHeight(30)
      .setRange(0, 2)
@@ -48,6 +50,7 @@ public void createUI(){
      .setSize(200,20)
      .setColorActive(color(242, 165, 0))
      .setColorForeground(color(242, 165, 0))
+     .setColorBackground(color(200, 200, 200))
      .setWidth(300)
      .setHeight(30)
      .setRange(-100, 100)
@@ -59,7 +62,8 @@ public void createUI(){
      .setPosition(100,760)
      .setSize(200,20)
      .setColorActive(color(214, 147, 2))
-     .setColorForeground(color(214, 147, 2))
+     .setColorForeground(color(214, 147, 2)) 
+     .setColorBackground(color(200, 200, 200))
      .setWidth(300)
      .setHeight(30)
      .setRange(0, 2)
@@ -121,14 +125,14 @@ cp5.addTextlabel("Mac Color")
    .setFont(createFont("Georgia",20))
    . moveTo("filters picker")
    ;
-cp5.addTextlabel("Scot Face")
-   .setText("Scot Face")
+cp5.addTextlabel("Mactivities")
+   .setText("Mactivities")
    .setPosition(290,845)
    .setFont(createFont("Georgia",20))
    . moveTo("filters picker")
    ;
-cp5.addTextlabel("Mac Background")
-   .setText("Mac Background")
+cp5.addTextlabel("Blizzard")
+   .setText("Blizzard")
    .setPosition(460,845)
    .setFont(createFont("Georgia",20))
    . moveTo("filters picker")

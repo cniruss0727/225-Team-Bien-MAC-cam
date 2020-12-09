@@ -11,6 +11,8 @@ import ddf.minim.*;
   ControlP5 savePictureCp5;
   Capture cam;
   Filter macColorFilter;
+  BlizzardFilter blizzardFilter;
+  MactivityFilter mactivityFilter;
   ContrastFilter contrastFilter;
   Button recorder;
   Rectangle[] faces;
@@ -39,6 +41,8 @@ import ddf.minim.*;
    
     macColorFilter = new MacColorFilter(this);
     contrastFilter = new ContrastFilter(this);
+    mactivityFilter = new MactivityFilter(this);
+    blizzardFilter = new BlizzardFilter(this);
     
     createUI();
     
@@ -88,23 +92,31 @@ void draw() {
     if (cam.available()){
     cam.read();
   } 
-    if(((Button)(cp5.getController("macColorFilterButton"))).isOn()){
-    processedImage = macColorFilter.transform(cam);
-  }else {
-    processedImage = cam;
+  processedImage = cam.get(0, 0, cam.width, cam.height);
+  
+    if(((Button)(cp5.getController("P3"))).isOn()){
+      processedImage = blizzardFilter.transform(processedImage);
+      if(frameNumber % 5 == 0){
+        System.gc();
+      } 
+  }
+  
+  if(((Button)(cp5.getController("macColorFilterButton"))).isOn()){
+    processedImage = macColorFilter.transform(processedImage);
   }
   
   if(!slidersAtDefault()){
-  processedImage = contrastFilter.transform(processedImage,
+    processedImage = contrastFilter.transform(processedImage,
       Math.round(cp5.get("Brightness").getValue()),
       cp5.get("Contrast").getValue(),
       cp5.get("Saturation").getValue());
-      tint(((ColorWheel)(cp5.get("Hue"))).getRGB());
+    PGraphics buffer = createGraphics(processedImage.width, processedImage.height);
+    buffer.beginDraw();
+    buffer.tint(((ColorWheel)(cp5.get("Hue"))).getRGB());
+    buffer.image(processedImage, 0, 0);
+    buffer.endDraw();
+    processedImage = buffer.get(0, 0, processedImage.width, processedImage.height);
   }
-  
-  image(processedImage, 10, 10);
-  tint(255, 255);
-  g.removeCache(processedImage);
       
   // if(((Button)(cp5.getController("scotSticker"))).isOn()){
   // state = true;
@@ -114,38 +126,38 @@ void draw() {
   //      }
   //}
   
-  for(Sticker sticker : stickers){
-    image(sticker.getActiveImage(frameNumber, 5), sticker.getX(), sticker.getY());
+  if(((Button)(cp5.getController("P2"))).isOn()){
+      processedImage = mactivityFilter.transform(processedImage);
+      if(frameNumber % 5 == 0){
+        System.gc();
+      }
   }
   
   
-  for(ScotSticker a :scotStickers) {
-    image(a.getImages(), a.getX(), a.getY());
-  }
+  image(processedImage, 10, 10);
+  g.removeCache(processedImage);
   
   
   if(((Button)(cp5.getController("scotFace"))).isOn()){
-      opencv.loadImage(cam);  
-      faces = opencv.detect(1.2, 2, 0, width/8, width);
-      if (faces != null) {
-      for (int i = 0; i < faces.length; i++) {
-        image(loadImage("macalester logo.png"), faces[i].x, faces[i].y, faces[i].width, faces[i].height);
-        }
+    opencv.loadImage(cam);  
+    faces = opencv.detect(1.2, 2, 0, width/8, width);
+    if (faces != null) {
+    for (int i = 0; i < faces.length; i++) {
+      image(loadImage("scotImage.png"), faces[i].x - faces[i].width/2.7, faces[i].y - faces[i].height/2.7, faces[i].width * 1.5, faces[i].height * 1.5);
       }
-      if(frameNumber % 5 == 0){
-        System.gc();
-      }
-  } else if(((Button)(cp5.getController("P2"))).isOn()){
-      opencv.loadImage(cam);  
-      faces = opencv.detect(1.2, 2, 0, width/8, width);
-      if (faces != null) {
-      for (int i = 0; i < faces.length; i++) {
-        image(loadImage("scotImage.png"), faces[i].x - faces[i].width/2.7, faces[i].y - faces[i].height/2.7, faces[i].width * 1.5, faces[i].height * 1.5);
-        }
-      }
-      if(frameNumber % 5 == 0){
-        System.gc();
-      }
+    }
+    if(frameNumber % 5 == 0){
+      System.gc();
+    }
+  } 
+  
+  for(Sticker sticker : stickers){
+    image(sticker.getActiveImage(frameNumber, 5), sticker.getX(), sticker.getY());
+  }
+
+
+  for(ScotSticker a :scotStickers) {
+    image(a.getImages(), a.getX(), a.getY());
   }
   
   //if(!((Button)cp5.get("audioControl")).isOn() && ScotlandTheBrave.isPlaying() && !((Button)cp5.get("scotFace")).isOn()){
