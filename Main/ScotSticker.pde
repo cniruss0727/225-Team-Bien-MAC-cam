@@ -6,7 +6,7 @@ class ScotSticker{
   public ScotSticker(float x, float y) {
     this.x = x;
     this.y = y;
-    img = loadImage("preview.jpg");
+    img = loadImage("111.png");
   }
   
   public PImage getImages(){
@@ -33,7 +33,8 @@ class ScotSticker{
 }
 
 void createScotStickerButton() {
-  PImage img = loadImage("preview.jpg");
+  PImage img = loadImage("111.png");
+  img.resize(113, 0);
   Button ScotStickerButton = cp5.addButton("ScotSticker")
       .setPosition(200, 650)
       .setSwitch(true)
