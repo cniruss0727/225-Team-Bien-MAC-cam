@@ -191,18 +191,14 @@ void draw() {
 
   if(ScotlandTheBrave.isPlaying()){
        cp5.getController("audioControl").setImages(speakerOff); 
+       ScotlandTheBrave.pause();
   }
   if(!ScotlandTheBrave.isPlaying()){
        cp5.getController("audioControl").setImages(speaker);
+        ScotlandTheBrave.play();
   }
     
-  if(ScotlandTheBrave.isPlaying()){
-    ScotlandTheBrave.pause();
-  }else {
-      ScotlandTheBrave.play();
-  }
- }
- 
+}
  public void mouseClicked() {
     //Check to see if the boolean "state" is true so that we could pass in coordinates
       for(StickerButton button: stickerButtons){
@@ -260,17 +256,20 @@ public void takePhoto(){
 
 public void scotFace(){
   
-    ScotlandTheBrave.play();
+   
     
     PImage[] preview4On = {loadImage("preview4On.jpg"),loadImage("preview4On.jpg"),loadImage("preview4On.jpg")};
     PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview4.jpg")};
   if(!((Button)(cp5.getController("scotFace"))).isOn()){
        cp5.getController("scotFace").setImages(preview4Off);
-         ScotlandTheBrave.pause();
+        ScotlandTheBrave.pause();
+        ButtonStatus();
   }
   if(((Button)(cp5.getController("scotFace"))).isOn()){
        cp5.getController("scotFace").setImages(preview4On);
+        ScotlandTheBrave.play();
   }
+
   }
   
 public void macColorFilterButton(){
@@ -279,26 +278,31 @@ public void macColorFilterButton(){
    PImage[] preview1Off = {loadImage("preview1.JPG"),loadImage("preview1.JPG"),loadImage("preview1.JPG")};
    if(!((Button)(cp5.getController("macColorFilterButton"))).isOn()){
        cp5.getController("macColorFilterButton").setImages(preview1Off);
-         ScotlandTheBrave.pause();
   }
   if(((Button)(cp5.getController("macColorFilterButton"))).isOn()){
        cp5.getController("macColorFilterButton").setImages(preview1On);
   }
+ButtonStatus();
+
 }
 
 public void P2(){
-if(ScotlandTheBrave.isPlaying()){
-    ScotlandTheBrave.pause();
-  }
+ButtonStatus();
 
   
 }
 
 public void P3(){
+ButtonStatus();
+  
+}
+
+public void ButtonStatus(){
+ PImage[] speakerOff = {loadImage("speaker3.png"),loadImage("speaker3.png"),loadImage("speaker3.png")};
 if(ScotlandTheBrave.isPlaying()){
     ScotlandTheBrave.pause();
+    cp5.getController("audioControl").setImages(speakerOff); 
   }
 
-  
 }
  
