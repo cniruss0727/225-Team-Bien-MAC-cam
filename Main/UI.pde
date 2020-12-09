@@ -167,7 +167,7 @@ PImage[] preview3 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage
      .moveTo("filters picker")
      .updateSize()
      ;
-PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview4.jpg")};
+PImage[] preview4Off = {loadImage("preview4.JPG"),loadImage("preview4.JPG"),loadImage("preview4.JPG")};
      recorder= cp5.addButton("scotFace")
      .setPosition(630, 650)
      .setImages(preview4Off)

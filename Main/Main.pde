@@ -258,16 +258,21 @@ public void scotFace(){
   
    
     
-    PImage[] preview4On = {loadImage("preview4On.jpg"),loadImage("preview4On.jpg"),loadImage("preview4On.jpg")};
-    PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview4.jpg")};
+    PImage[] preview4On = {loadImage("preview4On.JPG"),loadImage("preview4On.JPG"),loadImage("preview4On.JPG")};
+    PImage[] preview4Off = {loadImage("preview4.JPG"),loadImage("preview4.JPG"),loadImage("preview4.JPG")};
+   PImage[] speaker = {loadImage("speaker2.png"),loadImage("speaker2.png"),loadImage("speaker2.png")};
+     PImage[] speakerOff = {loadImage("speaker3.png"),loadImage("speaker3.png"),loadImage("speaker3.png")};
   if(!((Button)(cp5.getController("scotFace"))).isOn()){
        cp5.getController("scotFace").setImages(preview4Off);
-        ScotlandTheBrave.pause();
-        ButtonStatus();
+         
+    ScotlandTheBrave.pause();
+      cp5.getController("audioControl").setImages(speakerOff);
   }
   if(((Button)(cp5.getController("scotFace"))).isOn()){
        cp5.getController("scotFace").setImages(preview4On);
-        ScotlandTheBrave.play();
+       ScotlandTheBrave.play();
+        cp5.getController("audioControl").setImages(speaker);
+      
   }
 
   }
