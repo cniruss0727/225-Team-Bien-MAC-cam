@@ -189,11 +189,12 @@ void draw() {
     PImage[] speakerOff = {loadImage("speaker3.png"),loadImage("speaker3.png"),loadImage("speaker3.png")};
 
 
-  if(ScotlandTheBrave.isPlaying()){
+if(ScotlandTheBrave.isPlaying()){
        cp5.getController("audioControl").setImages(speakerOff); 
-       ScotlandTheBrave.pause();
-  }
-  if(!ScotlandTheBrave.isPlaying()){
+      ScotlandTheBrave.pause();
+}
+
+  else if (!ScotlandTheBrave.isPlaying()){
        cp5.getController("audioControl").setImages(speaker);
         ScotlandTheBrave.play();
   }
@@ -265,7 +266,7 @@ public void scotFace(){
   if(!((Button)(cp5.getController("scotFace"))).isOn()){
        cp5.getController("scotFace").setImages(preview4Off);
          
-    ScotlandTheBrave.pause();
+      ScotlandTheBrave.pause();
       cp5.getController("audioControl").setImages(speakerOff);
   }
   if(((Button)(cp5.getController("scotFace"))).isOn()){
@@ -278,16 +279,16 @@ public void scotFace(){
   }
   
 public void macColorFilterButton(){
-  ScotlandTheBrave.pause();
+  ButtonStatus();
    PImage[] preview1On = {loadImage("preview1On.JPG"),loadImage("preview1On.JPG"),loadImage("preview1On.JPG")};
    PImage[] preview1Off = {loadImage("preview1.JPG"),loadImage("preview1.JPG"),loadImage("preview1.JPG")};
    if(!((Button)(cp5.getController("macColorFilterButton"))).isOn()){
        cp5.getController("macColorFilterButton").setImages(preview1Off);
   }
   if(((Button)(cp5.getController("macColorFilterButton"))).isOn()){
-       cp5.getController("macColorFilterButton").setImages(preview1On);
+       cp5.getController("macColorFilterButton").setImages(preview1On);     
   }
-ButtonStatus();
+
 
 }
 
