@@ -61,8 +61,8 @@ public void createUI(){
     cp5.addSlider("Contrast")
      .setPosition(100,760)
      .setSize(200,20)
-     .setColorActive(color(214, 147, 2))
-     .setColorForeground(color(214, 147, 2)) 
+     .setColorActive(color(247, 171, 7))
+     .setColorForeground(color(247, 171, 7)) 
      .setColorBackground(color(200, 200, 200))
      .setWidth(300)
      .setHeight(30)
@@ -76,12 +76,15 @@ public void createUI(){
      .setSize(200, 200)
      .moveTo("color adjustment");
      
-    cp5.addBang("resetSliders")
+    cp5.addButton("resetSliders")
       .setPosition(100, 800)
       .setLabel("Reset")
       .setSize(100, 60)
-      .moveTo("color adjustment")
-      .setTriggerEvent(Bang.RELEASE);
+      .setColorBackground(color(200, 200, 200))
+      .setColorLabel(color(0, 0, 0))
+      .setColorActive(color(100, 100, 100))
+      .setColorForeground(color(247, 171, 7))
+      .moveTo("color adjustment");
       
     resetSliders();
      
@@ -167,7 +170,7 @@ PImage[] preview3 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage
      .moveTo("filters picker")
      .updateSize()
      ;
-PImage[] preview4Off = {loadImage("preview4.JPG"),loadImage("preview4.JPG"),loadImage("preview4.JPG")};
+PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview4.jpg")};
      recorder= cp5.addButton("scotFace")
      .setPosition(630, 650)
      .setImages(preview4Off)

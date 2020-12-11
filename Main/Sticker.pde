@@ -107,9 +107,13 @@ void createStickerButtons(){
   stickerButtons.add(macHeartStickerButton);
   stickerButtons.add(goScotsStickerButton);
   
-  cp5.addBang("clearStickers")
+  cp5.addButton("clearStickers")
     .setPosition(800, 700)
-    .setSize(100, 80)
+    .setSize(120, 80)
+    .setColorBackground(color(200, 200, 200))
+    .setColorLabel(color(0, 0, 0))
+    .setColorActive(color(100, 100, 100))
+    .setColorForeground(color(247, 171, 7))
     .setLabel("Clear Stickers")
     .moveTo("stickers");
 }
