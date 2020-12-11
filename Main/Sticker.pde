@@ -108,8 +108,15 @@ void createStickerButtons(){
   stickerButtons.add(goScotsStickerButton);
   
   cp5.addButton("clearStickers")
-    .setPosition(810, 700)
-    .setSize(80, 80)
+
+    .setPosition(810, 720)
+
+    .setSize(120, 80)
+    .setColorBackground(color(200, 200, 200))
+    .setColorLabel(color(0, 0, 0))
+    .setColorActive(color(100, 100, 100))
+    .setColorForeground(color(247, 171, 7))
+
     .setLabel("Clear Stickers")
     .moveTo("stickers");
 }
