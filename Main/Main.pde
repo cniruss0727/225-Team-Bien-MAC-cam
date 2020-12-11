@@ -31,6 +31,8 @@ import ddf.minim.*;
   Minim minim;
   int frameNumber = 0;
   ArrayList<ScotSticker> scotStickers = new ArrayList<ScotSticker>();
+  ArrayList<ScotSticker> presidentStickers1 = new ArrayList<ScotSticker>();
+  ArrayList<ScotSticker> presidentStickers2 = new ArrayList<ScotSticker>();
 
  void setup() {
     size(960, 900);
@@ -160,6 +162,13 @@ void draw() {
     image(a.getImages(), a.getX(), a.getY());
   }
   
+  for(ScotSticker b :presidentStickers1) {
+    image(b.getImg2(), b.getX(), b.getY());
+  }
+  
+  for(ScotSticker c :presidentStickers2) {
+    image(c.getImg3(), c.getX(), c.getY());
+  }
   //if(!((Button)cp5.get("audioControl")).isOn() && ScotlandTheBrave.isPlaying() && !((Button)cp5.get("scotFace")).isOn()){
   //  ScotlandTheBrave.pause();
   //}
@@ -219,6 +228,22 @@ if(ScotlandTheBrave.isPlaying()){
         }
       }
       
+      if(((Button)(cp5.getController("PresidentButton1"))).isOn()) {
+        //System.out.println(5);
+        if(mouseY < 600){
+        presidentStickers1.add(new ScotSticker(mouseX, mouseY));
+        
+        }
+      }
+      
+      if(((Button)(cp5.getController("PresidentButton2"))).isOn()) {
+        
+        if(mouseY < 600){
+        presidentStickers2.add(new ScotSticker(mouseX, mouseY));
+        
+        }
+      }
+      
       
   }
 
@@ -256,9 +281,6 @@ public void takePhoto(){
 }
 
 public void scotFace(){
-  
-   
-    
     PImage[] preview4On = {loadImage("preview4On.JPG"),loadImage("preview4On.JPG"),loadImage("preview4On.JPG")};
     PImage[] preview4Off = {loadImage("preview4.JPG"),loadImage("preview4.JPG"),loadImage("preview4.JPG")};
    PImage[] speaker = {loadImage("speaker2.png"),loadImage("speaker2.png"),loadImage("speaker2.png")};

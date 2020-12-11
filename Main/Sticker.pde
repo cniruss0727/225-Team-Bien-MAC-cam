@@ -85,7 +85,7 @@ void loadStickerImages(){
 void createStickerButtons(){
   Button macHeartButton = cp5.addButton("MacHeartButton")
       .setSwitch(true)
-      .setPosition(400, 700)
+      .setPosition(450, 700)
       .setImages(stickerImageMap.get("MacHeart")[0], stickerImageMap.get("MacHeart")[1], stickerImageMap.get("MacHeart")[1], addBorderToImage(stickerImageMap.get("MacHeart")[0], 4, color(0,0,0)))
       .moveTo("stickers")
       .updateSize();
@@ -93,7 +93,7 @@ void createStickerButtons(){
   Sticker macHeartSticker = new Sticker(stickerImageMap.get("MacHeart"), 0, 0, true);
       
   Button goScotsButton = cp5.addButton("GoScotsButton")
-      .setPosition(600, 700)
+      .setPosition(620, 700)
       .setSwitch(true)
       .setImages(stickerImageMap.get("GoScots")[0], stickerImageMap.get("GoScots")[1], stickerImageMap.get("GoScots")[1], addBorderToImage(stickerImageMap.get("GoScots")[0], 4, color(0,0,0)))
       .moveTo("stickers")
@@ -107,9 +107,9 @@ void createStickerButtons(){
   stickerButtons.add(macHeartStickerButton);
   stickerButtons.add(goScotsStickerButton);
   
-  cp5.addBang("clearStickers")
-    .setPosition(800, 700)
-    .setSize(100, 80)
+  cp5.addButton("clearStickers")
+    .setPosition(810, 700)
+    .setSize(80, 80)
     .setLabel("Clear Stickers")
     .moveTo("stickers");
 }
@@ -129,4 +129,6 @@ public PImage addBorderToImage(PImage img, int borderWidth, int col){
 public void clearStickers(){
   stickers.clear();
   scotStickers.clear();
+  presidentStickers1.clear();
+  presidentStickers2.clear();
 }
