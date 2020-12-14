@@ -89,7 +89,7 @@ createScotStickerButton();
 
 
 void draw() {
-    background(50, 84, 168);
+    background(76, 102, 178);
     rect(0,0,width,height-300);   
     if (cam.available()){
     cam.read();
@@ -256,8 +256,8 @@ public void takePhoto(){
 }
 
 public void scotFace(){
-    PImage[] preview4On = {loadImage("preview4On.JPG"),loadImage("preview4On.JPG"),loadImage("preview4On.JPG")};
-    PImage[] preview4Off = {loadImage("preview4.JPG"),loadImage("preview4.JPG"),loadImage("preview4.JPG")};
+    PImage[] preview4On = {loadImage("preview4On.jpg"),loadImage("preview4On.jpg"),loadImage("preview4On.jpg")};
+    PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview4.jpg")};
    PImage[] speaker = {loadImage("speaker2.png"),loadImage("speaker2.png"),loadImage("speaker2.png")};
      PImage[] speakerOff = {loadImage("speaker3.png"),loadImage("speaker3.png"),loadImage("speaker3.png")};
   if(!((Button)(cp5.getController("scotFace"))).isOn()){
@@ -290,12 +290,28 @@ public void macColorFilterButton(){
 }
 
 public void P2(){
+   PImage[] preview2On = {loadImage("preview2On.JPG"),loadImage("preview2On.JPG"),loadImage("preview2On.JPG")};
+   PImage[] preview2Off = {loadImage("preview2.JPG"),loadImage("preview2.JPG"),loadImage("preview2.JPG")};
+  if(!((Button)(cp5.getController("P2"))).isOn()){
+       cp5.getController("P2").setImages(preview2Off);
+  }
+  if(((Button)(cp5.getController("P2"))).isOn()){
+       cp5.getController("P2").setImages(preview2On);     
+  }
 ButtonStatus();
 
   
 }
 
 public void P3(){
+   PImage[] preview3On = {loadImage("preview3On.jpg"),loadImage("preview3On.jpg"),loadImage("preview3On.jpg")};
+   PImage[] preview3Off = {loadImage("preview3.JPG"),loadImage("preview3.JPG"),loadImage("preview3.JPG")};
+  if(!((Button)(cp5.getController("P3"))).isOn()){
+       cp5.getController("P3").setImages(preview3Off);
+  }
+  if(((Button)(cp5.getController("P3"))).isOn()){
+       cp5.getController("P3").setImages(preview3On);     
+  }
 ButtonStatus();
   
 }

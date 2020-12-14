@@ -304,7 +304,7 @@ ButtonStatus();
 }
 
 public void P3(){
-   PImage[] preview3On = {loadImage("preview3On.JPG"),loadImage("preview3On.JPG"),loadImage("preview3On.JPG")};
+   PImage[] preview3On = {loadImage("preview3On.jpg"),loadImage("preview3On.jpg"),loadImage("preview3On.jpg")};
    PImage[] preview3Off = {loadImage("preview3.JPG"),loadImage("preview3.JPG"),loadImage("preview3.JPG")};
   if(!((Button)(cp5.getController("P3"))).isOn()){
        cp5.getController("P3").setImages(preview3Off);
