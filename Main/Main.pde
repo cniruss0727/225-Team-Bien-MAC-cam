@@ -219,32 +219,7 @@ if(ScotlandTheBrave.isPlaying()){
           stickers.add(new Sticker(sticker.getImages(), mouseX - dw/2, mouseY - dh/2, true));
           break;
         }
-      }
-      if(((Button)(cp5.getController("ScotSticker"))).isOn()) {
-        //System.out.println(5);
-        if(mouseY < 600){
-        scotStickers.add(new ScotSticker(mouseX, mouseY));
-        
-        }
-      }
-      
-      if(((Button)(cp5.getController("PresidentButton1"))).isOn()) {
-        //System.out.println(5);
-        if(mouseY < 600){
-        presidentStickers1.add(new ScotSticker(mouseX, mouseY));
-        
-        }
-      }
-      
-      if(((Button)(cp5.getController("PresidentButton2"))).isOn()) {
-        
-        if(mouseY < 600){
-        presidentStickers2.add(new ScotSticker(mouseX, mouseY));
-        
-        }
-      }
-      
-      
+      }  
   }
 
 public void resetSliders(){

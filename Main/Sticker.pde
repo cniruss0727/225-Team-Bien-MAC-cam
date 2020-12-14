@@ -88,7 +88,8 @@ void createStickerButtons(){
       .setPosition(450, 700)
       .setImages(stickerImageMap.get("MacHeart")[0], stickerImageMap.get("MacHeart")[1], stickerImageMap.get("MacHeart")[1], addBorderToImage(stickerImageMap.get("MacHeart")[0], 4, color(0,0,0)))
       .moveTo("stickers")
-      .updateSize();
+      .updateSize()
+      .onRelease(turnOffOtherStickerButtons);
   
   Sticker macHeartSticker = new Sticker(stickerImageMap.get("MacHeart"), 0, 0, true);
       
@@ -97,7 +98,8 @@ void createStickerButtons(){
       .setSwitch(true)
       .setImages(stickerImageMap.get("GoScots")[0], stickerImageMap.get("GoScots")[1], stickerImageMap.get("GoScots")[1], addBorderToImage(stickerImageMap.get("GoScots")[0], 4, color(0,0,0)))
       .moveTo("stickers")
-      .updateSize();
+      .updateSize()
+      .onRelease(turnOffOtherStickerButtons);
       
   Sticker goScotsSticker = new Sticker(stickerImageMap.get("GoScots"), 0, 0, true);
   
@@ -139,3 +141,13 @@ public void clearStickers(){
   presidentStickers1.clear();
   presidentStickers2.clear();
 }
+
+CallbackListener turnOffOtherStickerButtons = new CallbackListener(){
+  void controlEvent(CallbackEvent theEvent){
+    for(StickerButton sb : stickerButtons){
+      if(!sb.getButton().equals(theEvent.getController())){
+        sb.getButton().setOff();
+      }
+    }
+  }
+};

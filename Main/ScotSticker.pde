@@ -61,7 +61,8 @@ void createScotStickerButton() {
       .setImages(img, img, img, addBorderToImage(img, 4, color(0,0,0)))
       //.setImages(ScotButtonImage)
       .moveTo("stickers")
-      .updateSize();
+      .updateSize()
+      .onRelease(turnOffOtherStickerButtons);
       
   Button presidentButton1 = cp5.addButton("PresidentButton1")
       .setPosition(200, 700)
@@ -69,7 +70,8 @@ void createScotStickerButton() {
       .setImages(img2, img2, img2, addBorderToImage(img2, 4, color(0,0,0)))
       //.setImages(ScotButtonImage)
       .moveTo("stickers")
-      .updateSize();
+      .updateSize()
+      .onRelease(turnOffOtherStickerButtons);
       
   Button presidentButton2 = cp5.addButton("PresidentButton2")
       .setPosition(100, 675)
@@ -77,5 +79,10 @@ void createScotStickerButton() {
       .setImages(img3, img3, img3, addBorderToImage(img3, 4, color(0,0,0)))
       //.setImages(ScotButtonImage)
       .moveTo("stickers")
-      .updateSize();
+      .updateSize()
+      .onRelease(turnOffOtherStickerButtons);
+      
+ stickerButtons.add(new StickerButton(ScotStickerButton, new Sticker(new PImage[]{img}, 0, 0, false)));
+ stickerButtons.add(new StickerButton(presidentButton1, new Sticker(new PImage[]{img2}, 0, 0, false)));
+ stickerButtons.add(new StickerButton(presidentButton2, new Sticker(new PImage[]{img3}, 0, 0, false)));
 }
