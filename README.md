@@ -1,5 +1,11 @@
 # 225-Team-Bien-MAC-cam
 
+## FOR FUTURE DEVELOPERS
+* Platform: Processing v3.5.4 
+* Libraries : OpenCV, ControlP5, Video, Minim, G4P 
+* System: Windows/ (Poentially older MacOs but was never tested)
+* To connect to zoom: Use OBS (see more at:https://obsproject.com)
+* Download the zip file, extract it and click on exe to test
 
 ## Ultimate goals:  
 A live cam software  for Macalester that runs on computers, which integrates all kinds of filters, especially macalester-themed filters, and you can take pictures/record videos.
