@@ -75,3 +75,14 @@ Customized filters & Changing background
 * OBS can be used to connect our filters to zoom
 * Progress in background detection function, made seperate class
 * Got President Rivera's authorization of using her pictures
+
+## 12.11
+* Accessibility Audit
+* Issue: Blue Color Adjustment 
+
+## 12.14
+* Work On Final Presentatiin
+* Refactoring(change variable/method names, formatting code, add comments if needed)
+* Tidied up folder (changed main file mame and deleted all the practices)
+
+
