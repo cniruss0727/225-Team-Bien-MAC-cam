@@ -256,8 +256,8 @@ public void takePhoto(){
 }
 
 public void scotFace(){
-    PImage[] preview4On = {loadImage("preview4On.JPG"),loadImage("preview4On.JPG"),loadImage("preview4On.JPG")};
-    PImage[] preview4Off = {loadImage("preview4.JPG"),loadImage("preview4.JPG"),loadImage("preview4.JPG")};
+    PImage[] preview4On = {loadImage("preview4On.jpg"),loadImage("preview4On.jpg"),loadImage("preview4On.jpg")};
+    PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview4.jpg")};
    PImage[] speaker = {loadImage("speaker2.png"),loadImage("speaker2.png"),loadImage("speaker2.png")};
      PImage[] speakerOff = {loadImage("speaker3.png"),loadImage("speaker3.png"),loadImage("speaker3.png")};
   if(!((Button)(cp5.getController("scotFace"))).isOn()){

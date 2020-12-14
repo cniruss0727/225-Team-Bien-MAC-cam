@@ -163,10 +163,11 @@ PImage[] preview2Off = {loadImage("preview2.JPG"),loadImage("preview2.JPG"),load
      .moveTo("filters picker")
      .updateSize()
       ;
-PImage[] preview3 = {loadImage("preview.jpg"),loadImage("preview.jpg"),loadImage("preview.jpg")};
+
+PImage[] preview3Off = {loadImage("preview3.JPG"),loadImage("preview3.JPG"),loadImage("preview3.JPG")};
      recorder= cp5.addButton("P3")
      .setPosition(460, 650)
-     .setImages(preview3)
+     .setImages(preview3Off)
      .moveTo("filters picker")
      .updateSize()
      ;
