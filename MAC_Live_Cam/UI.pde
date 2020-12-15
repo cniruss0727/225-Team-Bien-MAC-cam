@@ -88,7 +88,7 @@ public void createUI(){
       
     resetSliders();
      
-//buttons    
+//Buttons with different pirctures for different conditions(being clicked, uncliked)
       PImage[] recordButtons = {loadImage("recordButton1.png"),loadImage("recordButton2.png"),loadImage("recordButton3.png")};
     recorder= cp5.addButton("takePhoto")
      .setPosition(18, 615)
@@ -148,7 +148,7 @@ cp5.addTextlabel("Scotland The Brave")
    ;
       
 
-//filters buttons
+//Filters buttons with different pirctures for different conditions(being clicked, uncliked)
 PImage[] preview1Off = {loadImage("preview1.JPG"),loadImage("preview1.JPG"),loadImage("preview1.JPG")};
      recorder= cp5.addButton("macColorFilterButton")
      .setPosition(120, 650)
