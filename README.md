@@ -2,7 +2,7 @@
 
 ## FOR FUTURE DEVELOPERS
 * Platform: Processing v3.5.4 
-* Libraries : OpenCV, ControlP5, Video, Minim, G4P 
+* Libraries : OpenCV, ControlP5, Video, Minim, G4P, Image Processing Algorithms. All are available through the Processing Development Environment's contribution manager: Click on Sketch -> Import Library -> Add Library, then search for the library.
 * System: Windows/ (Poentially older MacOs but was never tested)
 * To connect to zoom: Use OBS Studio (see more at:https://obsproject.com) and add a Window Capture source that captures the window of the MacCam program. Then run the Virtual Cam plugin for OBS (https://obsproject.com/forum/resources/obs-virtualcam.949/), which will simulate a virtual webcam on your device that Zoom will recognize (just change your camera in Zoom's settings to the OBS camera).
 * Download the zip file, extract it and click on exe to test
