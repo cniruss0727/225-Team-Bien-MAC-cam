@@ -7,7 +7,8 @@ class ScotSticker{
   float y;
   
   public ScotSticker(float x, float y) {
-  //Create a new scotsticker object with its x position and y position as inputs. Containing gettter and setter methods
+  //Create a new scotsticker object with its x position and y position as inputs. Containing gettter and setter methods for x/y coordinates
+  //Load three images and have getter methods for different images
     this.x = x;
     this.y = y;
     img = loadImage("111.png");
