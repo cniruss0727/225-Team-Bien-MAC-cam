@@ -30,9 +30,6 @@ import ddf.minim.*;
   AudioPlayer ScotlandTheBrave;
   Minim minim;
   int frameNumber = 0;
-  ArrayList<ScotSticker> scotStickers = new ArrayList<ScotSticker>();
-  ArrayList<ScotSticker> presidentStickers1 = new ArrayList<ScotSticker>();
-  ArrayList<ScotSticker> presidentStickers2 = new ArrayList<ScotSticker>();
 
  void setup() {
     size(960, 900);
@@ -98,9 +95,7 @@ void draw() {
   
     if(((Button)(cp5.getController("P3"))).isOn()){
       processedImage = blizzardFilter.transform(processedImage);
-      if(frameNumber % 5 == 0){
-        System.gc();
-      } 
+      collectGarbage();
   }
   
   if(((Button)(cp5.getController("macColorFilterButton"))).isOn()){
@@ -130,9 +125,7 @@ void draw() {
   
   if(((Button)(cp5.getController("P2"))).isOn()){
       processedImage = mactivityFilter.transform(processedImage);
-      if(frameNumber % 5 == 0){
-        System.gc();
-      }
+      collectGarbage();
   }
   
   
@@ -148,27 +141,13 @@ void draw() {
       image(loadImage("scotImage.png"), faces[i].x - faces[i].width/2.7, faces[i].y - faces[i].height/2.7, faces[i].width * 1.5, faces[i].height * 1.5);
       }
     }
-    if(frameNumber % 5 == 0){
-      System.gc();
-    }
+    collectGarbage();
   } 
   
   for(Sticker sticker : stickers){
     image(sticker.getActiveImage(frameNumber, 5), sticker.getX(), sticker.getY());
   }
 
-
-  for(ScotSticker a :scotStickers) {
-    image(a.getImages(), a.getX(), a.getY());
-  }
-  
-  for(ScotSticker b :presidentStickers1) {
-    image(b.getImg2(), b.getX(), b.getY());
-  }
-  
-  for(ScotSticker c :presidentStickers2) {
-    image(c.getImg3(), c.getX(), c.getY());
-  }
   //if(!((Button)cp5.get("audioControl")).isOn() && ScotlandTheBrave.isPlaying() && !((Button)cp5.get("scotFace")).isOn()){
   //  ScotlandTheBrave.pause();
   //}
@@ -256,24 +235,21 @@ public void takePhoto(){
 }
 
 public void scotFace(){
-    PImage[] preview4On = {loadImage("preview4On.jpg"),loadImage("preview4On.jpg"),loadImage("preview4On.jpg")};
-    PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview4.jpg")};
-   PImage[] speaker = {loadImage("speaker2.png"),loadImage("speaker2.png"),loadImage("speaker2.png")};
-     PImage[] speakerOff = {loadImage("speaker3.png"),loadImage("speaker3.png"),loadImage("speaker3.png")};
+  PImage[] preview4On = {loadImage("preview4On.jpg"),loadImage("preview4On.jpg"),loadImage("preview4On.jpg")};
+  PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview4.jpg")};
+  PImage[] speaker = {loadImage("speaker2.png"),loadImage("speaker2.png"),loadImage("speaker2.png")};
+  PImage[] speakerOff = {loadImage("speaker3.png"),loadImage("speaker3.png"),loadImage("speaker3.png")};
   if(!((Button)(cp5.getController("scotFace"))).isOn()){
-       cp5.getController("scotFace").setImages(preview4Off);
-         
-      ScotlandTheBrave.pause();
-      cp5.getController("audioControl").setImages(speakerOff);
+    cp5.getController("scotFace").setImages(preview4Off);  
+    ScotlandTheBrave.pause();
+    cp5.getController("audioControl").setImages(speakerOff);
   }
   if(((Button)(cp5.getController("scotFace"))).isOn()){
-       cp5.getController("scotFace").setImages(preview4On);
-       ScotlandTheBrave.play();
-        cp5.getController("audioControl").setImages(speaker);
-      
+    cp5.getController("scotFace").setImages(preview4On);
+    ScotlandTheBrave.play();
+    cp5.getController("audioControl").setImages(speaker);
   }
-
-  }
+}
   
 public void macColorFilterButton(){
   ButtonStatus();
@@ -290,8 +266,8 @@ public void macColorFilterButton(){
 }
 
 public void P2(){
-   PImage[] preview2On = {loadImage("preview2On.JPG"),loadImage("preview2On.JPG"),loadImage("preview2On.JPG")};
-   PImage[] preview2Off = {loadImage("preview2.JPG"),loadImage("preview2.JPG"),loadImage("preview2.JPG")};
+  PImage[] preview2On = {loadImage("preview2On.JPG"),loadImage("preview2On.JPG"),loadImage("preview2On.JPG")};
+  PImage[] preview2Off = {loadImage("preview2.JPG"),loadImage("preview2.JPG"),loadImage("preview2.JPG")};
   if(!((Button)(cp5.getController("P2"))).isOn()){
        cp5.getController("P2").setImages(preview2Off);
   }
@@ -299,21 +275,18 @@ public void P2(){
        cp5.getController("P2").setImages(preview2On);     
   }
 ButtonStatus();
-
-  
 }
 
 public void P3(){
-   PImage[] preview3On = {loadImage("preview3On.jpg"),loadImage("preview3On.jpg"),loadImage("preview3On.jpg")};
-   PImage[] preview3Off = {loadImage("preview3.JPG"),loadImage("preview3.JPG"),loadImage("preview3.JPG")};
+  PImage[] preview3On = {loadImage("preview3On.jpg"),loadImage("preview3On.jpg"),loadImage("preview3On.jpg")};
+  PImage[] preview3Off = {loadImage("preview3.JPG"),loadImage("preview3.JPG"),loadImage("preview3.JPG")};
   if(!((Button)(cp5.getController("P3"))).isOn()){
        cp5.getController("P3").setImages(preview3Off);
   }
   if(((Button)(cp5.getController("P3"))).isOn()){
        cp5.getController("P3").setImages(preview3On);     
   }
-ButtonStatus();
-  
+ButtonStatus(); 
 }
 
 public void ButtonStatus(){
@@ -322,6 +295,11 @@ if(ScotlandTheBrave.isPlaying()){
     ScotlandTheBrave.pause();
     cp5.getController("audioControl").setImages(speakerOff); 
   }
+}
 
+public void collectGarbage(){
+    if(frameNumber % 5 == 0){
+    System.gc();
+  }
 }
  

@@ -138,9 +138,6 @@ public PImage addBorderToImage(PImage img, int borderWidth, int col){
 //Clear all the stickers from the webcam
 public void clearStickers(){
   stickers.clear();
-  scotStickers.clear();
-  presidentStickers1.clear();
-  presidentStickers2.clear();
 }
 
 CallbackListener turnOffOtherStickerButtons = new CallbackListener(){
