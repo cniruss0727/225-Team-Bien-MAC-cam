@@ -302,4 +302,8 @@ public void collectGarbage(){
     System.gc();
   }
 }
+  
+public void Question(){
+   link("https://docs.google.com/document/d/e/2PACX-1vR_3_oNKlqxlHoDWDBWtI7DsnAYN5TT78z1IIXOa6Fb7tMxMuflHID6qLD5ncLFYtC1o76_-KbKJgxe/pub");
+}
  
