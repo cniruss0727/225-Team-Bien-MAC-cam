@@ -6,7 +6,6 @@ void createSavePictureWindow(){
   savePictureWindow.addDrawHandler(this, "drawSaveWindow");
   savePictureWindow.setAlwaysOnTop(true); 
   savePictureWindow.setTitle("");
-  //savePictureWindow.setActionOnClose(G4P.CLOSE_WINDOW);
   
   createWindowCp5();
 }
@@ -18,10 +17,6 @@ public void drawSaveWindow(PApplet app, GWinData data){
 
 public void createWindowCp5(){
   savePictureCp5 = new ControlP5(savePictureWindow, new ControlFont(createFont("Georgia", 14)));
-  //GTextField savePictureTextField = new GTextField(savePictureWindow, 100, 50, 150, 30);
-  //GLabel savePictureText = new GLabel(savePictureWindow, 125, 10, 200, 50, "Enter a name for your photo: ");
-  //GButton savePictureButton = new GButton(savePictureWindow, 250, 100, 100, 50, "Save");
-  //GButton cancelSavePictureButton = new GButton(savePictureWindow, 50, 100, 100, 50, "Cancel");
   
   savePictureCp5.addTextlabel("text")
     .setText("Enter a name for your photo: ") 

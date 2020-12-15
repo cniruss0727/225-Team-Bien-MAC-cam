@@ -21,12 +21,9 @@ import ddf.minim.*;
   HashMap<String, PImage[]> stickerImageMap = new HashMap<String, PImage[]>();
   ArrayList<StickerButton> stickerButtons = new ArrayList<StickerButton>();
   OpenCV opencv;
-  float x;
-  float y;
   PImage currFrame;
   PImage recordImage;
   PImage processedImage;
-  PImage ScotButtonImage;
   AudioPlayer ScotlandTheBrave;
   Minim minim;
   int frameNumber = 0;
@@ -45,21 +42,10 @@ import ddf.minim.*;
     
     createUI();
     
-  ////filter selection bar
-  //  ButtonBar b = cp5.addButtonBar("filter bar")
-  //     .setPosition(300, 800)
-  //     .setSize(400, 30)
-  //     .addItems(split("a b c d e"," "))
-  //     .moveTo("filters picker");
-  //     ;
-       
-    //b.changeItem("a","text","basic");
-    //b.changeItem("b","text","MAC");
-    //b.changeItem("c","text","stickers");
+    loadStickerImages();
+    createStickerButtons();
+    createScotStickerButton();
     
-loadStickerImages();
-createStickerButtons();
-createScotStickerButton();
     String[] cameras = Capture.list();
     while(cameras.length == 0){
         println("There are no cameras available for capture.");
@@ -71,7 +57,6 @@ createScotStickerButton();
       println(cameras[i]);
     }
       
-    
     cam = new Capture(this, 940, 580, cameras[0]);
     
     opencv = new OpenCV(this, 940, 580);
@@ -81,21 +66,20 @@ createScotStickerButton();
     ScotlandTheBrave = minim.loadFile("scotland the brave.mp3");
     cam.start();
   
-    
  }
 
 
 void draw() {
-    background(76, 102, 178);
-    rect(0,0,width,height-300);   
-    if (cam.available()){
-    cam.read();
+  background(76, 102, 178);
+  rect(0,0,width,height-300);   
+  if (cam.available()){
+  cam.read();
   } 
   processedImage = cam.get(0, 0, cam.width, cam.height);
   
-    if(((Button)(cp5.getController("P3"))).isOn()){
-      processedImage = blizzardFilter.transform(processedImage);
-      collectGarbage();
+  if(((Button)(cp5.getController("P3"))).isOn()){
+    processedImage = blizzardFilter.transform(processedImage);
+    collectGarbage();
   }
   
   if(((Button)(cp5.getController("macColorFilterButton"))).isOn()){
@@ -115,30 +99,20 @@ void draw() {
     processedImage = buffer.get(0, 0, processedImage.width, processedImage.height);
   }
       
-  // if(((Button)(cp5.getController("scotSticker"))).isOn()){
-  // state = true;
-  //    //access the two position lists and create stickers on the frame
-  //    for(int i = 0; i < xposition.size(); i++) {
-  //      image(loadImage("stickerButton.png"), xposition.get(i), yposition.get(i));
-  //      }
-  //}
-  
   if(((Button)(cp5.getController("P2"))).isOn()){
       processedImage = mactivityFilter.transform(processedImage);
       collectGarbage();
-  }
-  
+  } 
   
   image(processedImage, 10, 10);
   g.removeCache(processedImage);
-  
   
   if(((Button)(cp5.getController("scotFace"))).isOn()){
     opencv.loadImage(cam);  
     faces = opencv.detect(1.2, 2, 0, width/8, width);
     if (faces != null) {
     for (int i = 0; i < faces.length; i++) {
-      image(loadImage("scotImage.png"), faces[i].x - faces[i].width/2.7, faces[i].y - faces[i].height/2.7, faces[i].width * 1.5, faces[i].height * 1.5);
+      image(loadImage("scotImage.png"), faces[i].x - faces[i].width/3, faces[i].y - faces[i].height/2.7, faces[i].width * 1.5, faces[i].height * 1.5);
       }
     }
     collectGarbage();
@@ -147,10 +121,6 @@ void draw() {
   for(Sticker sticker : stickers){
     image(sticker.getActiveImage(frameNumber, 5), sticker.getX(), sticker.getY());
   }
-
-  //if(!((Button)cp5.get("audioControl")).isOn() && ScotlandTheBrave.isPlaying() && !((Button)cp5.get("scotFace")).isOn()){
-  //  ScotlandTheBrave.pause();
-  //}
   
   frameNumber++;
 }
@@ -176,18 +146,15 @@ void draw() {
     PImage[] speaker = {loadImage("speaker2.png"),loadImage("speaker2.png"),loadImage("speaker2.png")};
     PImage[] speakerOff = {loadImage("speaker3.png"),loadImage("speaker3.png"),loadImage("speaker3.png")};
 
-
-if(ScotlandTheBrave.isPlaying()){
-       cp5.getController("audioControl").setImages(speakerOff); 
-      ScotlandTheBrave.pause();
-}
-
-  else if (!ScotlandTheBrave.isPlaying()){
-       cp5.getController("audioControl").setImages(speaker);
+    if(ScotlandTheBrave.isPlaying()){
+        cp5.getController("audioControl").setImages(speakerOff); 
+        ScotlandTheBrave.pause();
+    }  else if (!ScotlandTheBrave.isPlaying()){
+        cp5.getController("audioControl").setImages(speaker);
         ScotlandTheBrave.play();
-  }
-    
+    }
 }
+
  public void mouseClicked() {
     //Check to see if the boolean "state" is true so that we could pass in coordinates
       for(StickerButton button: stickerButtons){
@@ -243,8 +210,7 @@ public void scotFace(){
     cp5.getController("scotFace").setImages(preview4Off);  
     ScotlandTheBrave.pause();
     cp5.getController("audioControl").setImages(speakerOff);
-  }
-  if(((Button)(cp5.getController("scotFace"))).isOn()){
+  } else {
     cp5.getController("scotFace").setImages(preview4On);
     ScotlandTheBrave.play();
     cp5.getController("audioControl").setImages(speaker);
@@ -257,8 +223,7 @@ public void macColorFilterButton(){
    PImage[] preview1Off = {loadImage("preview1.JPG"),loadImage("preview1.JPG"),loadImage("preview1.JPG")};
    if(!((Button)(cp5.getController("macColorFilterButton"))).isOn()){
        cp5.getController("macColorFilterButton").setImages(preview1Off);
-  }
-  if(((Button)(cp5.getController("macColorFilterButton"))).isOn()){
+  } else {
        cp5.getController("macColorFilterButton").setImages(preview1On);     
   }
 
@@ -270,8 +235,7 @@ public void P2(){
   PImage[] preview2Off = {loadImage("preview2.JPG"),loadImage("preview2.JPG"),loadImage("preview2.JPG")};
   if(!((Button)(cp5.getController("P2"))).isOn()){
        cp5.getController("P2").setImages(preview2Off);
-  }
-  if(((Button)(cp5.getController("P2"))).isOn()){
+  } else {
        cp5.getController("P2").setImages(preview2On);     
   }
 ButtonStatus();
@@ -282,8 +246,7 @@ public void P3(){
   PImage[] preview3Off = {loadImage("preview3.JPG"),loadImage("preview3.JPG"),loadImage("preview3.JPG")};
   if(!((Button)(cp5.getController("P3"))).isOn()){
        cp5.getController("P3").setImages(preview3Off);
-  }
-  if(((Button)(cp5.getController("P3"))).isOn()){
+  } else {
        cp5.getController("P3").setImages(preview3On);     
   }
 ButtonStatus(); 

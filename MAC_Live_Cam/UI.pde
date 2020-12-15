@@ -1,35 +1,32 @@
 public void createUI(){
  //Tabs   
     cp5.getTab("default")
-.setColorBackground(color(255,255,255, 1))
+     .setColorBackground(color(255,255,255, 1))
      .setColorForeground(color(255,255,255,1))
      .setColorActive(color(255,255,255,1))
      .setLabel("")
-      .setAlwaysActive(true);
-     
-    //  .setPosition(-10,-10);
-     // .setVisible(false);
+     .setAlwaysActive(true);
+
       
-     cp5.addTab("filters picker")
-.setColorBackground(color(255,255,255, 1))
+    cp5.addTab("filters picker")
+     .setColorBackground(color(255,255,255, 1))
      .setColorForeground(color(255,255,255,1))
      .setColorActive(color(255,255,255,1))
      .setLabel("");
 
     
     cp5.addTab("color adjustment")
-.setColorBackground(color(255,255,255, 1))
+     .setColorBackground(color(255,255,255, 1))
      .setColorForeground(color(255,255,255,1))
      .setColorActive(color(255,255,255,1))
      .setLabel("");
 
      
-        cp5.addTab("stickers")  
-.setColorBackground(color(255,255,255, 1))
+    cp5.addTab("stickers")  
+     .setColorBackground(color(255,255,255, 1))
      .setColorForeground(color(255,255,255,1))
      .setColorActive(color(255,255,255,1))
      .setLabel("");
-
  
  //All the sliders for color adjustment   
     cp5.addSlider("Saturation")
@@ -72,7 +69,7 @@ public void createUI(){
      ;
      
     cp5.addColorWheel("Hue")
-     .setPosition(500, 650)
+     .setPosition(550, 650)
      .setSize(200, 200)
      .moveTo("color adjustment");
      
@@ -89,24 +86,24 @@ public void createUI(){
     resetSliders();
      
 //Buttons with different pirctures for different conditions(being clicked, uncliked)
-      PImage[] recordButtons = {loadImage("recordButton1.png"),loadImage("recordButton2.png"),loadImage("recordButton3.png")};
-    recorder= cp5.addButton("takePhoto")
+     PImage[] recordButtons = {loadImage("recordButton1.png"),loadImage("recordButton2.png"),loadImage("recordButton3.png")};
+     recorder = cp5.addButton("takePhoto")
      .setPosition(18, 615)
      .setImages(recordButtons)
      .moveTo("default")
      .updateSize()
      ;
      
-   PImage[] filterButtons = {loadImage("filterButton4.png"),loadImage("filterButton3.png"),loadImage("filterButton4.png")};
-     recorder= cp5.addButton("filter")
+     PImage[] filterButtons = {loadImage("filterButton4.png"),loadImage("filterButton3.png"),loadImage("filterButton4.png")};
+     cp5.addButton("filter")
      .setPosition(752, 616)
      .setImages(filterButtons)
      .moveTo("default")
      .updateSize()
      ;
      
-      PImage[] colorButtons = {loadImage("colorButton3.png"),loadImage("colorButton4.png"),loadImage("colorButton3.png")};
-     recorder= cp5.addButton("colour")
+     PImage[] colorButtons = {loadImage("colorButton3.png"),loadImage("colorButton4.png"),loadImage("colorButton3.png")};
+     cp5.addButton("colour")
      .setPosition(826, 620)
      .setImages(colorButtons)
      .moveTo("default")
@@ -114,7 +111,7 @@ public void createUI(){
      ;
      
      PImage[] stickerButtons = {loadImage("stickerButton.png"),loadImage("stickerButton2.png"),loadImage("stickerButton.png")};
-     recorder= cp5.addButton("sticker")
+     cp5.addButton("sticker")
      .setPosition(891, 617)
      .setImages(stickerButtons)
      .moveTo("default")
@@ -150,14 +147,14 @@ cp5.addTextlabel("Scotland The Brave")
 
 //Filters buttons with different pirctures for different conditions(being clicked, uncliked)
 PImage[] preview1Off = {loadImage("preview1.JPG"),loadImage("preview1.JPG"),loadImage("preview1.JPG")};
-     recorder= cp5.addButton("macColorFilterButton")
+     cp5.addButton("macColorFilterButton")
      .setPosition(120, 650)
      .setImages(preview1Off)
      .moveTo("filters picker")
      .updateSize()
      ;
 PImage[] preview2Off = {loadImage("preview2.JPG"),loadImage("preview2.JPG"),loadImage("preview2.JPG")};
-     recorder= cp5.addButton("P2")
+     cp5.addButton("P2")
      .setPosition(290, 650)
      .setImages(preview2Off)
      .moveTo("filters picker")
@@ -165,14 +162,14 @@ PImage[] preview2Off = {loadImage("preview2.JPG"),loadImage("preview2.JPG"),load
       ;
 
 PImage[] preview3Off = {loadImage("preview3.JPG"),loadImage("preview3.JPG"),loadImage("preview3.JPG")};
-     recorder= cp5.addButton("P3")
+     cp5.addButton("P3")
      .setPosition(460, 650)
      .setImages(preview3Off)
      .moveTo("filters picker")
      .updateSize()
      ;
 PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),loadImage("preview4.jpg")};
-     recorder= cp5.addButton("scotFace")
+     cp5.addButton("scotFace")
      .setPosition(630, 650)
      .setImages(preview4Off)
      .moveTo("filters picker")
@@ -180,7 +177,7 @@ PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),load
      ;
      
   PImage[] speaker = {loadImage("speaker2.png"),loadImage("speaker2.png"),loadImage("speaker2.png")};
-      recorder= cp5.addButton("audioControl")
+     cp5.addButton("audioControl")
      .setPosition(750, 780)
      .setImages(speaker)
      .moveTo("filters picker")
@@ -188,7 +185,7 @@ PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),load
 
      ;
 PImage[] question = {loadImage("Question.png"),loadImage("Question.png"),loadImage("Question.png")};
-      recorder= cp5.addButton("Question")
+     cp5.addButton("Question")
      .setPosition(870, 820)
      .setImages(question)
      .moveTo("default")
