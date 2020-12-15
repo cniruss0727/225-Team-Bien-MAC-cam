@@ -1,4 +1,5 @@
 class ScotSticker{
+//Class for image stickers
   PImage img;
   PImage img2;
   PImage img3;
@@ -6,6 +7,7 @@ class ScotSticker{
   float y;
   
   public ScotSticker(float x, float y) {
+  //Create a new scotsticker object with its x position and y position as inputs. Containing gettter and setter methods
     this.x = x;
     this.y = y;
     img = loadImage("111.png");
@@ -49,12 +51,16 @@ class ScotSticker{
 }
 
 void createScotStickerButton() {
+//Load the images for three image stickers
+
   PImage img = loadImage("111.png");
   PImage img2 = loadImage("president1Img1.png");
   PImage img3 = loadImage("presidentImg2.png");
   img2.resize(100,0);
   img.resize(100, 0);
   img3.resize(70,0);
+  
+  //Create buttons on the UI
   Button ScotStickerButton = cp5.addButton("ScotSticker")
       .setPosition(325, 675)
       .setSwitch(true)
@@ -81,7 +87,8 @@ void createScotStickerButton() {
       .moveTo("stickers")
       .updateSize()
       .onRelease(turnOffOtherStickerButtons);
-      
+ 
+ //Add the three image stickers to the StickerButton Class
  stickerButtons.add(new StickerButton(ScotStickerButton, new Sticker(new PImage[]{img}, 0, 0, false)));
  stickerButtons.add(new StickerButton(presidentButton1, new Sticker(new PImage[]{img2}, 0, 0, false)));
  stickerButtons.add(new StickerButton(presidentButton2, new Sticker(new PImage[]{img3}, 0, 0, false)));
