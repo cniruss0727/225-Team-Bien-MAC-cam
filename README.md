@@ -4,7 +4,7 @@
 * Platform: Processing v3.5.4 
 * Libraries : OpenCV, ControlP5, Video, Minim, G4P 
 * System: Windows/ (Poentially older MacOs but was never tested)
-* To connect to zoom: Use OBS (see more at:https://obsproject.com)
+* To connect to zoom: Use OBS Studio (see more at:https://obsproject.com) and add a Window Capture source that captures the window of the MacCam program. Then run the Virtual Cam plugin for OBS (https://obsproject.com/forum/resources/obs-virtualcam.949/), which will simulate a virtual webcam on your device that Zoom will recognize (just change your camera in Zoom's settings to the OBS camera).
 * Download the zip file, extract it and click on exe to test
 * Main folder is the older folder containg all the files and commits. Mac_Live_Cam is the new folder that contains complete new files.
 
