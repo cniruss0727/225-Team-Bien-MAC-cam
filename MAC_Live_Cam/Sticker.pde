@@ -135,6 +135,7 @@ public PImage addBorderToImage(PImage img, int borderWidth, int col){
   return buffer.get(0, 0, img.width+borderWidth*2, img.height+borderWidth*2);
 }
 
+//Clear all the stickers from the webcam
 public void clearStickers(){
   stickers.clear();
   scotStickers.clear();
