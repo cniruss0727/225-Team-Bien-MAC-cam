@@ -23,18 +23,12 @@ class ScotSticker{
   }
   
   public PImage getImg2() {
-    return img2;
-    
+    return img2; 
   }
   
   public PImage getImg3() {
     return img3;
   }
-  public float getX(){
-    return x;
-  }
-  
- 
   
   void setX(float x) {
     this.x = x;
@@ -46,6 +40,10 @@ class ScotSticker{
   
   public float getY(){
     return y;
+  }
+  
+  public float getX(){
+    return x;
   }
   
 
