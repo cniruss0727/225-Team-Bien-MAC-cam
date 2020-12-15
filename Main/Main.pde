@@ -325,3 +325,7 @@ if(ScotlandTheBrave.isPlaying()){
 
 }
  
+ 
+ public void Question(){
+   launch("User Help Manual for Mac Live Cam v1.0 .txt");
+ }

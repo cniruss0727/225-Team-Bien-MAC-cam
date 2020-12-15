@@ -187,4 +187,12 @@ PImage[] preview4Off = {loadImage("preview4.jpg"),loadImage("preview4.jpg"),load
      .updateSize()
 
      ;
+     
+  PImage[] question = {loadImage("Question.png"),loadImage("Question.png"),loadImage("Question.png")};
+      recorder= cp5.addButton("Question")
+     .setPosition(750, 780)
+     .setImages(question)
+     .moveTo("main")
+     .updateSize()
+
   }

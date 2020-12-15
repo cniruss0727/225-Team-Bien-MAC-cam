@@ -1,0 +1,21 @@
+User Help Manual for Mac Live Cam v1.0  
+
+Q: How to Connect To Zoom?
+A: Download OBS(https://obsproject.com)
+
+
+Q: What is the Mac Activity Filter? How does it work?
+A:  Mac activity filter is a filter that refreshes at a very fast rate and generates random activities that you can do on the Macalester campus. When you take a static photo it will stop on one random activity.
+
+
+Q: What is the Color Picker for?
+A: You can change the color scheme of the video by clicking on any specific color on the block.
+
+
+Q: Where are the pictures saved at?
+A:  To look for the pictures you take, go to the root folder for your MAC live cam -> photos.
+
+
+Q: What is the sticker tab?
+A: It contains five stickers(two gif stickers and three static stickers) that you can put on the cam. You can play around with them and save the pictures. You can click the reset button and delete all the stickers you added.
+
